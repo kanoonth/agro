@@ -1,0 +1,2 @@
+module RegionCertaintyFactorsHelper
+end

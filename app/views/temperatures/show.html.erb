@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Min:</strong>
+  <%= @temperature.min %>
+</p>
+
+<p>
+  <strong>Max:</strong>
+  <%= @temperature.max %>
+</p>
+
+<p>
+  <strong>Disease:</strong>
+  <%= @temperature.disease %>
+</p>
+
+<p>
+  <strong>Cf:</strong>
+  <%= @temperature.cf %>
+</p>
+
+<%= link_to 'Edit', edit_temperature_path(@temperature) %> |
+<%= link_to 'Back', temperatures_path %>

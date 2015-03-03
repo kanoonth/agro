@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ecology Certainty Factors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Disease</th>
+      <th>Ecology</th>
+      <th>Cf</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ecology_certainty_factors.each do |ecology_certainty_factor| %>
+      <tr>
+        <td><%= ecology_certainty_factor.disease %></td>
+        <td><%= ecology_certainty_factor.ecology %></td>
+        <td><%= ecology_certainty_factor.cf %></td>
+        <td><%= link_to 'Show', ecology_certainty_factor %></td>
+        <td><%= link_to 'Edit', edit_ecology_certainty_factor_path(ecology_certainty_factor) %></td>
+        <td><%= link_to 'Destroy', ecology_certainty_factor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ecology certainty factor', new_ecology_certainty_factor_path %>

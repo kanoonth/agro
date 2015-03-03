@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Air Moistures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Disease</th>
+      <th>Cf</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @air_moistures.each do |air_moisture| %>
+      <tr>
+        <td><%= air_moisture.min %></td>
+        <td><%= air_moisture.max %></td>
+        <td><%= air_moisture.disease %></td>
+        <td><%= air_moisture.cf %></td>
+        <td><%= link_to 'Show', air_moisture %></td>
+        <td><%= link_to 'Edit', edit_air_moisture_path(air_moisture) %></td>
+        <td><%= link_to 'Destroy', air_moisture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Air moisture', new_air_moisture_path %>

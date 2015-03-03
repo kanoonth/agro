@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Min:</strong>
+  <%= @wind.min %>
+</p>
+
+<p>
+  <strong>Max:</strong>
+  <%= @wind.max %>
+</p>
+
+<p>
+  <strong>Disease:</strong>
+  <%= @wind.disease %>
+</p>
+
+<p>
+  <strong>Cf:</strong>
+  <%= @wind.cf %>
+</p>
+
+<%= link_to 'Edit', edit_wind_path(@wind) %> |
+<%= link_to 'Back', winds_path %>

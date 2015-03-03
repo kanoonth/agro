@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Disease:</strong>
+  <%= @soil_type_certainty_factor.disease %>
+</p>
+
+<p>
+  <strong>Soil type:</strong>
+  <%= @soil_type_certainty_factor.soil_type %>
+</p>
+
+<%= link_to 'Edit', edit_soil_type_certainty_factor_path(@soil_type_certainty_factor) %> |
+<%= link_to 'Back', soil_type_certainty_factors_path %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Rains</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Disease</th>
+      <th>Cf</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rains.each do |rain| %>
+      <tr>
+        <td><%= rain.min %></td>
+        <td><%= rain.max %></td>
+        <td><%= rain.disease %></td>
+        <td><%= rain.cf %></td>
+        <td><%= link_to 'Show', rain %></td>
+        <td><%= link_to 'Edit', edit_rain_path(rain) %></td>
+        <td><%= link_to 'Destroy', rain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rain', new_rain_path %>

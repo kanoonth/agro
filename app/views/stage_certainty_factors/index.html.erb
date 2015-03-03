@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Stage Certainty Factors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cf</th>
+      <th>Stage</th>
+      <th>Disease</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stage_certainty_factors.each do |stage_certainty_factor| %>
+      <tr>
+        <td><%= stage_certainty_factor.cf %></td>
+        <td><%= stage_certainty_factor.stage %></td>
+        <td><%= stage_certainty_factor.disease %></td>
+        <td><%= link_to 'Show', stage_certainty_factor %></td>
+        <td><%= link_to 'Edit', edit_stage_certainty_factor_path(stage_certainty_factor) %></td>
+        <td><%= link_to 'Destroy', stage_certainty_factor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stage certainty factor', new_stage_certainty_factor_path %>

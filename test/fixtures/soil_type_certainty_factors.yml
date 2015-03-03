@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  disease_id: 
+  soil_type_id: 
+
+two:
+  disease_id: 
+  soil_type_id: 

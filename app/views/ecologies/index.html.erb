@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ecologies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ecologies.each do |ecology| %>
+      <tr>
+        <td><%= ecology.name %></td>
+        <td><%= link_to 'Show', ecology %></td>
+        <td><%= link_to 'Edit', edit_ecology_path(ecology) %></td>
+        <td><%= link_to 'Destroy', ecology, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ecology', new_ecology_path %>

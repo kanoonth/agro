@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Soil Moistures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Disease</th>
+      <th>Cf</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @soil_moistures.each do |soil_moisture| %>
+      <tr>
+        <td><%= soil_moisture.min %></td>
+        <td><%= soil_moisture.max %></td>
+        <td><%= soil_moisture.disease %></td>
+        <td><%= soil_moisture.cf %></td>
+        <td><%= link_to 'Show', soil_moisture %></td>
+        <td><%= link_to 'Edit', edit_soil_moisture_path(soil_moisture) %></td>
+        <td><%= link_to 'Destroy', soil_moisture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Soil moisture', new_soil_moisture_path %>

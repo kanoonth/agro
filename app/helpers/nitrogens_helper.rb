@@ -1,0 +1,2 @@
+module NitrogensHelper
+end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  min: 9.99
+  max: 9.99
+  disease_id: 
+  cf: 9.99
+
+two:
+  min: 9.99
+  max: 9.99
+  disease_id: 
+  cf: 9.99

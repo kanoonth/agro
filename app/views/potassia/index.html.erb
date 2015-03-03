@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Potassia</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Stage</th>
+      <th>Disease</th>
+      <th>Cf</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @potassia.each do |potassium| %>
+      <tr>
+        <td><%= potassium.min %></td>
+        <td><%= potassium.max %></td>
+        <td><%= potassium.stage %></td>
+        <td><%= potassium.disease %></td>
+        <td><%= potassium.cf %></td>
+        <td><%= link_to 'Show', potassium %></td>
+        <td><%= link_to 'Edit', edit_potassium_path(potassium) %></td>
+        <td><%= link_to 'Destroy', potassium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Potassium', new_potassium_path %>

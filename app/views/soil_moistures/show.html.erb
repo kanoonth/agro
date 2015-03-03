@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Min:</strong>
+  <%= @soil_moisture.min %>
+</p>
+
+<p>
+  <strong>Max:</strong>
+  <%= @soil_moisture.max %>
+</p>
+
+<p>
+  <strong>Disease:</strong>
+  <%= @soil_moisture.disease %>
+</p>
+
+<p>
+  <strong>Cf:</strong>
+  <%= @soil_moisture.cf %>
+</p>
+
+<%= link_to 'Edit', edit_soil_moisture_path(@soil_moisture) %> |
+<%= link_to 'Back', soil_moistures_path %>

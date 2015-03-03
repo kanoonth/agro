@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Min:</strong>
+  <%= @rain.min %>
+</p>
+
+<p>
+  <strong>Max:</strong>
+  <%= @rain.max %>
+</p>
+
+<p>
+  <strong>Disease:</strong>
+  <%= @rain.disease %>
+</p>
+
+<p>
+  <strong>Cf:</strong>
+  <%= @rain.cf %>
+</p>
+
+<%= link_to 'Edit', edit_rain_path(@rain) %> |
+<%= link_to 'Back', rains_path %>

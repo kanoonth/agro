@@ -1,0 +1,2 @@
+module AreaTypeCertaintyFactorsHelper
+end

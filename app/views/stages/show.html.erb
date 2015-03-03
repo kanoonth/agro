@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @stage.name %>
+</p>
+
+<p>
+  <strong>Min day:</strong>
+  <%= @stage.min_day %>
+</p>
+
+<p>
+  <strong>Max day:</strong>
+  <%= @stage.max_day %>
+</p>
+
+<%= link_to 'Edit', edit_stage_path(@stage) %> |
+<%= link_to 'Back', stages_path %>
