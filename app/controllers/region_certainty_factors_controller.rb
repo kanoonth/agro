@@ -69,6 +69,6 @@ class RegionCertaintyFactorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def region_certainty_factor_params
-      params.require(:region_certainty_factor).permit(:region_id, :disease_id)
+      params.require(:region_certainty_factor).permit(:region_id, :disease_id, :cf)
     end
 end

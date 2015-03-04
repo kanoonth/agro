@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302192327) do
+ActiveRecord::Schema.define(version: 20150304112340) do
 
   create_table "air_moistures", force: :cascade do |t|
     t.decimal  "min"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150302192327) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "disease_names", id: false, force: :cascade do |t|
+  create_table "disease_names", force: :cascade do |t|
     t.string   "name"
     t.integer  "disease_id"
     t.datetime "created_at", null: false
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20150302192327) do
   add_index "phosphorus", ["disease_id"], name: "index_phosphorus_on_disease_id"
   add_index "phosphorus", ["stage_id"], name: "index_phosphorus_on_stage_id"
 
-  create_table "plantation_certainty_factors", id: false, force: :cascade do |t|
+  create_table "plantation_certainty_factors", force: :cascade do |t|
     t.integer  "disease_id"
     t.integer  "plantation_id"
     t.decimal  "cf"
@@ -149,11 +149,12 @@ ActiveRecord::Schema.define(version: 20150302192327) do
 
   add_index "rains", ["disease_id"], name: "index_rains_on_disease_id"
 
-  create_table "region_certainty_factors", id: false, force: :cascade do |t|
+  create_table "region_certainty_factors", force: :cascade do |t|
     t.integer  "region_id"
     t.integer  "disease_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal  "cf"
   end
 
   add_index "region_certainty_factors", ["disease_id"], name: "index_region_certainty_factors_on_disease_id"
@@ -176,9 +177,10 @@ ActiveRecord::Schema.define(version: 20150302192327) do
 
   add_index "soil_moistures", ["disease_id"], name: "index_soil_moistures_on_disease_id"
 
-  create_table "soil_type_certainty_factors", id: false, force: :cascade do |t|
+  create_table "soil_type_certainty_factors", force: :cascade do |t|
     t.integer  "disease_id"
     t.integer  "soil_type_id"
+    t.decimal  "cf"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -192,7 +194,7 @@ ActiveRecord::Schema.define(version: 20150302192327) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "stage_certainty_factors", id: false, force: :cascade do |t|
+  create_table "stage_certainty_factors", force: :cascade do |t|
     t.decimal  "cf"
     t.integer  "stage_id"
     t.integer  "disease_id"

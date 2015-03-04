@@ -1,8 +1,9 @@
 class CreateSoilTypeCertaintyFactors < ActiveRecord::Migration
   def change
-    create_table :soil_type_certainty_factors, :id => false do |t|
+    create_table :soil_type_certainty_factors do |t|
       t.references :disease, index: true
       t.references :soil_type, index: true
+      t.decimal :cf
 
       t.timestamps null: false
     end

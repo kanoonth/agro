@@ -69,6 +69,6 @@ class SoilTypeCertaintyFactorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def soil_type_certainty_factor_params
-      params.require(:soil_type_certainty_factor).permit(:disease_id, :soil_type_id)
+      params.require(:soil_type_certainty_factor).permit(:disease_id, :soil_type_id, :cf)
     end
 end

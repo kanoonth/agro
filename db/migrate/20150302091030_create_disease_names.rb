@@ -1,6 +1,6 @@
 class CreateDiseaseNames < ActiveRecord::Migration
   def change
-    create_table :disease_names, :id => false do |t|
+    create_table :disease_names do |t|
       t.string :name
       t.references :disease, index: true
 

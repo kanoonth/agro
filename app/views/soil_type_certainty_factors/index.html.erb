@@ -7,6 +7,7 @@
     <tr>
       <th>Disease</th>
       <th>Soil type</th>
+      <th>cf</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= soil_type_certainty_factor.disease %></td>
         <td><%= soil_type_certainty_factor.soil_type %></td>
+        <td><%= soil_type_certainty_factor.cf %></td>
         <td><%= link_to 'Show', soil_type_certainty_factor %></td>
         <td><%= link_to 'Edit', edit_soil_type_certainty_factor_path(soil_type_certainty_factor) %></td>
         <td><%= link_to 'Destroy', soil_type_certainty_factor, method: :delete, data: { confirm: 'Are you sure?' } %></td>

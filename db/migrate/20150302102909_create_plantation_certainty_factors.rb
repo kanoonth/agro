@@ -1,6 +1,6 @@
 class CreatePlantationCertaintyFactors < ActiveRecord::Migration
   def change
-    create_table :plantation_certainty_factors, :id => false do |t|
+    create_table :plantation_certainty_factors do |t|
       t.references :disease, index: true
       t.references :plantation, index: true
       t.decimal :cf

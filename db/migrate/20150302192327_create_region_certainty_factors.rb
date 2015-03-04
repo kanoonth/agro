@@ -1,6 +1,6 @@
 class CreateRegionCertaintyFactors < ActiveRecord::Migration
   def change
-    create_table :region_certainty_factors, :id => false do |t|
+    create_table :region_certainty_factors do |t|
       t.references :region, index: true
       t.references :disease, index: true
 
