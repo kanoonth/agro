@@ -49,6 +49,10 @@ Rails.application.routes.draw do
 
   resources :nitrogens
 
+  root 'notifications#predict'
+
+  post 'notifications/predict' => 'notifications#get_predicted_diseases'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

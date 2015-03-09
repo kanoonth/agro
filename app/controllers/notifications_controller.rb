@@ -61,6 +61,34 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def predict
+    @regions = Region.all
+    @ecologies = Ecology.all
+    @area_types = AreaType.all
+    @plantations = Plantation.all
+    @soil_types = SoilType.all
+  end
+
+  def get_predicted_diseases
+    age = params[:age]
+    phosphoru = params[:phosphoru]
+    nitrogen = params[:nitrogen]
+    potassium = params[:potassium]
+    temperature = params[:temperature]
+    rain = params[:rain]
+    wind = params[:wind]
+    air_moisture = params[:air_moisture]
+    soil_moisture = params[:soil_moisture]
+    region_name = params[:notification][:region_name]
+    ecology_name = params[:notification][:ecology_name]
+    area_type_name = params[:notification][:area_type_name]
+    plantation_name = params[:notification][:plantation_name]
+    soil_type_name = params[:notification][:soil_type_name]
+
+    render :json => Notification.predict(age,phosphoru,nitrogen,potassium,temperature,rain,wind,air_moisture,soil_moisture,
+      region_name,ecology_name,area_type_name,plantation_name,soil_type_name)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_notification

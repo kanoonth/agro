@@ -1,0 +1,76 @@
+<%= form_tag notifications_predict_path, method: :post do  %>
+
+  <div class="field">
+    <%= label_tag :age %><br>
+	<%= number_field_tag :age %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :region_name %><br>
+	<%= collection_select :notification, :region_name, @regions, :name, :name %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :ecology_name %><br>
+	<%= collection_select :notification, :ecology_name, @ecologies, :name, :name %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :area_type_name %><br>
+	<%= collection_select :notification, :area_type_name, @area_types, :name, :name %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :plantation_name %><br>
+	<%= collection_select :notification, :plantation_name , @plantations, :name, :name %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :soil_type_name %><br>
+	<%= collection_select :notification, :soil_type_name , @soil_types, :name, :name %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :phosphoru %><br>
+	<%= number_field_tag :phosphoru %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :nitrogen %><br>
+	<%= number_field_tag :nitrogen %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :potassium %><br>
+	<%= number_field_tag :potassium %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :temperature %><br>
+	<%= number_field_tag :temperature %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :rain %><br>
+	<%= number_field_tag :rain %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :wind %><br>
+	<%= number_field_tag :wind %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :air_moisture %><br>
+	<%= number_field_tag :air_moisture %><br>
+  </div>
+
+  <div class="field">
+    <%= label_tag :soil_moisture %><br>
+	<%= number_field_tag :soil_moisture %><br>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Get Predicted Diseases" %>
+  </div>
+<% end %>

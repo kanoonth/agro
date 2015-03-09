@@ -1,6 +1,5 @@
 class StageCertaintyFactor < ActiveRecord::Base
   
-
   include ValidationHelper
   include CertaintyFactorsHelper
 

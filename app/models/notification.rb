@@ -17,40 +17,39 @@ class Notification < ActiveRecord::Base
   end
 
   def self.get_area_type_cf(disease, area_type_name)
-    begin
-      area_type = disease.area_types.where(name: area_type_name).first
-      AreaTypeCertaintyFactor.where(disease_id: disease.id, area_type_id: area_type.id).first.factor
-    rescue
+    area_type = disease.area_types.where(name: area_type_name)
+    unless area_type.empty?
+      AreaTypeCertaintyFactor.where(disease_id: disease.id, area_type_id: area_type.first.id).first.factor
+    else 
       0
     end
   end
 
   def self.get_plantation_cf(disease, plantation_name)
-    begin
-      plantation = disease.plantations.where(name: plantation_name).first
-      PlantationCertaintyFactor.where(disease_id: disease.id, plantation_id: plantation.id).first.factor
-    rescue
+    plantation = disease.plantations.where(name: plantation_name)
+    unless plantation.empty?
+      PlantationCertaintyFactor.where(disease_id: disease.id, plantation_id: plantation.first.id).first.factor
+    else
       0
     end
   end
 
   def self.get_soil_type_cf(disease, soil_type_name)
-    soil_type = disease.soil_types.where(name: soil_type_name ).first
-    SoilTypeCertaintyFactor.where(disease_id: disease.id, soil_type_id: soil_type.id).first.factor
+    soil_type = disease.soil_types.where(name: soil_type_name )
+    unless soil_type.empty?
+      SoilTypeCertaintyFactor.where(disease_id: disease.id, soil_type_id: soil_type.id).first.factor
+    else
+      0
+    end
   end
 
   def self.get_phosphoru_cf(disease, value, age)
     stages = disease.stages.where("min_day <= ? AND max_day >= ?", age, age)
     cf = 0
     stages.each do |stage|
-      begin
-        cf = if cf == 0
-          Phosphoru.where(disease_id: disease.id, stage_id: stage.id).first.factor
-        else
-          union_cf(cf, Phosphoru.where(disease_id: disease.id, stage_id: stage.id).first.factor)
-        end
-      rescue
-
+      phosphoru = Phosphoru.where(disease_id: disease.id, stage_id: stage.id)
+      unless phosphoru.empty?
+        cf = union_cf(cf, phosphoru.first.factor)
       end
     end
     cf
@@ -60,14 +59,9 @@ class Notification < ActiveRecord::Base
     stages = disease.stages.where("min_day <= ? AND max_day >= ?", age, age)
     cf = 0
     stages.each do |stage|
-      begin
-        cf = if cf == 0
-          Nitrogen.where(disease_id: disease.id, stage_id: stage.id).first.factor
-        else
-          union_cf(cf, Nitrogen.where(disease_id: disease.id, stage_id: stage.id).first.factor)
-        end
-      rescue
-
+      nitrogen = Nitrogen.where(disease_id: disease.id, stage_id: stage.id)
+      unless nitrogen.empty?
+        cf = union_cf(cf, nitrogen.first.factor)
       end
     end
     cf
@@ -77,14 +71,9 @@ class Notification < ActiveRecord::Base
     stages = disease.stages.where("min_day <= ? AND max_day >= ?", age, age)
     cf = 0
     stages.each do |stage|
-      begin
-        cf = if cf == 0
-          Potassium.where(disease_id: disease.id, stage_id: stage.id).first.factor
-        else
-          union_cf(cf, Potassium.where(disease_id: disease.id, stage_id: stage.id).first.factor)
-        end
-      rescue
-
+      potassium = Potassium.where(disease_id: disease.id, stage_id: stage.id)
+      unless potassium.empty?
+        cf = union_cf(cf, potassium.first.factor)
       end
     end
     cf
@@ -92,7 +81,9 @@ class Notification < ActiveRecord::Base
 
   # Rain or Temperature or Wind or AirMoisture or SoilMoisture
   def self.get_rtw_cf(value, rtw)
-  	cf = if rtw.maxf.zero? and value > rtw.minf
+  	cf = if rtw.nil?
+      0
+    elsif rtw.maxf.zero? and value > rtw.minf
   	  rtw.factor
   	elsif (rtw.minf..rtw.maxf).include? value
   	  rtw.factor
@@ -105,9 +96,10 @@ class Notification < ActiveRecord::Base
   	cf1 + cf2 - cf1 * cf2
   end
 
-  def self.predict
+  def self.predict(age,phosphoru,nitrogen,potassium,temperature,rain,wind,air_moisture,soil_moisture,
+      region_name,ecology_name,area_type_name,plantation_name,soil_type_name)
    	# age = Date.parse(Time.now.to_s) - date 
-   	a = Hash.new
+   	diseases = Hash.new
    	age = 10
    	region_name = "East"
    	temperature = 25
@@ -124,42 +116,52 @@ class Notification < ActiveRecord::Base
     potassium = 5
 
    	Disease.all.each do |disease|
-   	  cf = get_stage_cf(disease, age)
-      cf = union_cf(cf, get_region_cf(disease ,region_name))
-      cf = union_cf(cf, get_ecology_cf(disease, ecology_name))
-      cf = union_cf(cf, get_area_type_cf(disease, area_type_name))
-      cf = union_cf(cf, get_plantation_cf(disease, plantation_name))
-      cf = union_cf(cf, get_phosphoru_cf(disease, phosphoru, age))
-      cf = union_cf(cf, get_nitrogen_cf(disease, nitrogen, age))
-      cf = union_cf(cf, get_potassium_cf(disease, potassium, age))
+      cf = 0
+
+      stage_cf = get_stage_cf(disease, age)
+      cf = union_cf(cf, stage_cf)
       
-      unless disease.soil_types.empty?
-        cf = union_cf(cf, get_soil_type_cf(disease, soil_type_name))
-      end
+      region_cf = get_region_cf(disease ,region_name)
+      cf = union_cf(cf, region_cf)
 
-      if disease.temperature
-  	    cf = union_cf(cf, get_rtw_cf(temperature, disease.temperature)) 
-      end 
+      ecology_cf = get_ecology_cf(disease, ecology_name)
+      cf = union_cf(cf, ecology_cf)
 
-      if disease.rain
-        cf = union_cf(cf, get_rtw_cf(rain, disease.rain))
-      end
+      area_type_cf = get_area_type_cf(disease, area_type_name)
+      cf = union_cf(cf, area_type_cf)
 
-      if disease.wind
-        cf = union_cf(cf, get_rtw_cf(wind, disease.wind)) 
-      end 
+      plantation_cf = get_plantation_cf(disease, plantation_name)
+      cf = union_cf(cf, plantation_cf)
 
-      if disease.air_moisture
-        cf = union_cf(cf, get_rtw_cf(wind, disease.air_moisture)) 
-      end 
+      phosphoru_cf = get_phosphoru_cf(disease, phosphoru, age)
+      cf = union_cf(cf, phosphoru_cf)
 
-      if disease.soil_moisture
-        cf = union_cf(cf, get_rtw_cf(wind, disease.soil_moisture)) 
-      end 
+      nitrogen_cf = get_nitrogen_cf(disease, nitrogen, age)
+      cf = union_cf(cf, nitrogen_cf)
 
-  	  puts cf
-   	  a[disease.name] = cf
+      potassium_cf = get_potassium_cf(disease, potassium, age)
+      cf = union_cf(cf, potassium_cf)
+      
+      soil_type_cf = get_soil_type_cf(disease, soil_type_name)
+      cf = union_cf(cf, soil_type_cf)
+
+      temperature_cf = get_rtw_cf(temperature, disease.temperature)
+	    cf = union_cf(cf, temperature_cf) 
+
+      rain_cf = get_rtw_cf(rain, disease.rain)
+      cf = union_cf(cf, rain_cf)
+
+      wind_cf = get_rtw_cf(wind, disease.wind)
+      cf = union_cf(cf, wind_cf) 
+
+      air_moisture_cf = get_rtw_cf(wind, disease.air_moisture)
+      cf = union_cf(cf, air_moisture_cf) 
+
+      soil_moisture_cf = get_rtw_cf(wind, disease.soil_moisture)
+      cf = union_cf(cf, soil_moisture_cf) 
+
+   	  diseases[disease.name] = cf
     end
-    a
+    diseases
   end
 end
