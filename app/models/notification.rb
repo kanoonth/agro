@@ -17,13 +17,21 @@ class Notification < ActiveRecord::Base
   end
 
   def self.get_area_type_cf(disease, area_type_name)
-    area_type = disease.area_types.where(name: area_type_name).first
-    AreaTypeCertaintyFactor.where(disease_id: disease.id, area_type_id: area_type.id).first.factor
+    begin
+      area_type = disease.area_types.where(name: area_type_name).first
+      AreaTypeCertaintyFactor.where(disease_id: disease.id, area_type_id: area_type.id).first.factor
+    rescue
+      0
+    end
   end
 
   def self.get_plantation_cf(disease, plantation_name)
-    plantation = disease.plantations.where(name: plantation_name).first
-    PlantationCertaintyFactor.where(disease_id: disease.id, plantation_id: plantation.id).first.factor
+    begin
+      plantation = disease.plantations.where(name: plantation_name).first
+      PlantationCertaintyFactor.where(disease_id: disease.id, plantation_id: plantation.id).first.factor
+    rescue
+      0
+    end
   end
 
   def self.get_soil_type_cf(disease, soil_type_name)
@@ -100,20 +108,20 @@ class Notification < ActiveRecord::Base
   def self.predict
    	# age = Date.parse(Time.now.to_s) - date 
    	a = Hash.new
-   	age = 40
-   	region_name = "North_East"
-   	temperature = 40
-    wind = 10
-    rain = 20
-    ecology_name = "Ecology_B"
-    soil_mositure = 80
-    air_mositure = 30
-    area_type_name = "AreaType_B"
-    plantation_name = "Plantation_B"
-    soil_type_name = "SoilType_B"
-    phosphoru = 4
-    nitrogen = 1.5
-    potassium = 8
+   	age = 10
+   	region_name = "East"
+   	temperature = 25
+    wind = 5
+    rain = 0
+    ecology_name = "Ecology_A"
+    soil_mositure = 15
+    air_mositure = 70
+    area_type_name = "AreaType_A"
+    plantation_name = "Plantation_A"
+    soil_type_name = "SoilType_A"
+    phosphoru = 8
+    nitrogen = 3
+    potassium = 5
 
    	Disease.all.each do |disease|
    	  cf = get_stage_cf(disease, age)
@@ -152,5 +160,6 @@ class Notification < ActiveRecord::Base
   	  puts cf
    	  a[disease.name] = cf
     end
+    a
   end
 end
