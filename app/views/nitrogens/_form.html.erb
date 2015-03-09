@@ -27,7 +27,7 @@
   </div>
   <div class="field">
     <%= f.label :disease_id %><br>
-    <%= f.text_field :disease_id %>
+    <%= f.collection_select(:disease_id, Disease.all, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :cf %><br>
