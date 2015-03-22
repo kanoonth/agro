@@ -881,20 +881,20 @@ w.ecology = Ecology.where(name: "Irrigation").first
 w.save
 
 ##### SoilType
-x = SoilTypeCertaintyFactor.new( cf: 0.75 )
-x.disease = a
-x.soil_type = SoilType.where(name: "Clay").first
-x.save
+# x = SoilTypeCertaintyFactor.new( cf: 0.75 )
+# x.disease = a
+# x.soil_type = SoilType.where(name: "Clay").first
+# x.save
 
-y = SoilTypeCertaintyFactor.new( cf: 0.5 )
-y.disease = a
-y.soil_type = SoilType.where(name: "Mold").first
-y.save
+# y = SoilTypeCertaintyFactor.new( cf: 0.5 )
+# y.disease = a
+# y.soil_type = SoilType.where(name: "Mold").first
+# y.save
 
-z = SoilTypeCertaintyFactor.new( cf: 0.75 )
-z.disease = a
-z.soil_type = SoilType.where(name: "Sandy").first
-z.save
+# z = SoilTypeCertaintyFactor.new( cf: 0.75 )
+# z.disease = a
+# z.soil_type = SoilType.where(name: "Sandy").first
+# z.save
 
 ##### Air
 aa = Temperature.new( min: 30, max: 50, cf: 0.75 )
