@@ -13,7 +13,11 @@ class Notification < ActiveRecord::Base
 
   def self.get_ecology_cf(disease, ecology_name)
     ecology = disease.ecologies.where(name: ecology_name).first
-    EcologyCertaintyFactor.where(disease_id: disease.id, ecology_id: ecology.id).first.factor
+    unless ecology.nil?
+      EcologyCertaintyFactor.where(disease_id: disease.id, ecology_id: ecology.id).first.factor
+    else
+      0
+    end
   end
 
   def self.get_area_type_cf(disease, area_type_name)

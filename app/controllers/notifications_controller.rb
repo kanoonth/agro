@@ -85,8 +85,8 @@ class NotificationsController < ApplicationController
     plantation_name = params[:notification][:plantation_name]
     soil_type_name = params[:notification][:soil_type_name]
 
-    # render :json => Notification.predict(age,phosphoru,nitrogen,potassium,temperature,rain,wind,air_moisture,soil_moisture,
-    #   region_name,ecology_name,area_type_name,plantation_name,soil_type_name)
+    render :json => Notification.predict(age,phosphoru,nitrogen,potassium,temperature,rain,wind,air_moisture,soil_moisture,
+      region_name,ecology_name,area_type_name,plantation_name,soil_type_name)
   end
 
   private
