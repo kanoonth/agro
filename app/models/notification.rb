@@ -8,7 +8,11 @@ class Notification < ActiveRecord::Base
 
   def self.get_region_cf(disease, region_name)
   	region = disease.regions.where(name: region_name).first
-  	RegionCertaintyFactor.where(disease_id: disease.id, region_id: region.id).first.factor
+    unless region.nil?
+  	 RegionCertaintyFactor.where(disease_id: disease.id, region_id: region.id).first.factor
+    else
+      0
+    end
   end
 
   def self.get_ecology_cf(disease, ecology_name)
