@@ -272,7 +272,7 @@ cc = Wind.new( min: 29, max: 38, cf: 0.75 )
 cc.disease = a
 cc.save
 
-dd = นาน้ำฝน.new( min:35, max: 90, cf: 0.75 )
+dd = Rain.new( min:35, max: 90, cf: 0.75 )
 dd.disease = a
 dd.save
 
@@ -373,7 +373,7 @@ dd = SoilMoisture.new( min:65, max: 100, cf: 0.75 )
 dd.disease = a
 dd.save
 
-ee = นาน้ำฝน.new( min:10, max: 35, cf: 0.75 )
+ee = Rain.new( min:10, max: 35, cf: 0.75 )
 ee.disease = a
 ee.save
 
