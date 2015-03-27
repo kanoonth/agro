@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Cultivated Areas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Plantation</th>
+      <th>Plantation date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cultivated_areas.each do |cultivated_area| %>
+      <tr>
+        <td><%= cultivated_area.name %></td>
+        <td><%= cultivated_area.latitude %></td>
+        <td><%= cultivated_area.longitude %></td>
+        <td><%= cultivated_area.plantation %></td>
+        <td><%= cultivated_area.plantation_date %></td>
+        <td><%= link_to 'Show', cultivated_area %></td>
+        <td><%= link_to 'Edit', edit_cultivated_area_path(cultivated_area) %></td>
+        <td><%= link_to 'Destroy', cultivated_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cultivated area', new_cultivated_area_path %>

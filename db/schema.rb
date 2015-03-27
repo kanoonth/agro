@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150327123500) do
+ActiveRecord::Schema.define(version: 20150327155942) do
 
   create_table "air_moistures", force: :cascade do |t|
     t.decimal  "min"
@@ -40,6 +40,20 @@ ActiveRecord::Schema.define(version: 20150327123500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "cultivated_areas", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.integer  "plantation_id"
+    t.integer  "user_id"
+    t.date     "plantation_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "cultivated_areas", ["plantation_id"], name: "index_cultivated_areas_on_plantation_id"
+  add_index "cultivated_areas", ["user_id"], name: "index_cultivated_areas_on_user_id"
 
   create_table "disease_names", force: :cascade do |t|
     t.string   "name"
@@ -245,6 +259,11 @@ ActiveRecord::Schema.define(version: 20150327123500) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "tel"
+    t.string   "identity_number"
+    t.date     "birth_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "auth_token"

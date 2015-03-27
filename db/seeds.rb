@@ -1217,3 +1217,13 @@ prov.save
 prov = Province.new( name: "Yasothon")
 prov.region = Region.where(name: "ภาคตะวันออกเฉียงเหนือ").first
 prov.save
+
+# a = User.new( first_name: "Pinky", last_name: "Suriya", tel: "008188214", identity_number: "114004561258", birth_date: Date.yesterday )
+# b = CultivatedArea.new( longitude: 30, latitude:20, plantation: Plantation.first, user: a, plantation_date: Date.current )
+# c = CultivatedArea.new( longitude: 15, latitude:30, plantation: Plantation.find(2), user: a, plantation_date: Date.current )
+# a.save
+
+# a = User.new( first_name: "iXisTiC", last_name: "Gay", tel: "212224236", identity_number: "987654321", birth_date: Date.yesterday )
+# b = CultivatedArea.new( longitude: 5, latitude:12, plantation: Plantation.find(3), user: a, plantation_date: Date.current )
+# c = CultivatedArea.new( longitude: 4, latitude:9, plantation: Plantation.first, user: a, plantation_date: Date.current )
+# a.save

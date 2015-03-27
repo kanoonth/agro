@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cultivated_areas
+
   devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations" }
 
   resources :notifications

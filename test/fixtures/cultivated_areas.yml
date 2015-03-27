@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  latitude: 9.99
+  longitude: 9.99
+  plantation_id: 
+  plantation_date: 2015-03-27
+
+two:
+  name: MyString
+  latitude: 9.99
+  longitude: 9.99
+  plantation_id: 
+  plantation_date: 2015-03-27
