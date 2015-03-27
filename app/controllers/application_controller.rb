@@ -14,7 +14,9 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user_with_token(username, auth_token)
   	user = User.find_by_username(username)
-  	unless user && user.auth_token == auth_token
+  	if user && user.auth_token == auth_token
+  	  
+  	else
   	  authenticate_user!
   	end
   end
