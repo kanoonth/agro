@@ -23,12 +23,31 @@ Ecology.create( name: "นาน้ำฝน" )
 Ecology.create( name: "นาชลประทาน" )
 AreaType.create( name: "ที่ดอน" )
 AreaType.create( name: "ที่ลุ่น" )
-Plantation.create( name: "ปักดำ" ) 	# puk dam
-Plantation.create( name: "หว่าน" ) 		# hwan
-Plantation.create( name: "หยอด" )		# yod
+Plantation.create( name: "ปักดำ" )
+Plantation.create( name: "หว่าน" )
+Plantation.create( name: "หยอด" )
 SoilType.create( name: "ดินเหนียว" )
 SoilType.create( name: "ดินร่วน" )
 SoilType.create( name: "ดินทราย" )
+
+
+### Dump Content for testing.
+ContentType.create( name: "rice")
+ContentImage.create( title: "ggggg", link: "www.www.www")
+content = Content.new( title: "aslkdskdf", body: "klasjfsaf")
+content.content_type = ContentType.last
+content.content_images << ContentImage.last
+content.save
+
+rate = Rate.new( score: 5 )
+rate.content = Content.last
+rate.user = User.last
+rate.save
+
+comment = Comment.new( text: "comment yayyyyyyy")
+comment.content = Content.last
+comment.user = User.last
+comment.save
 
 #################################################################################
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150327155942) do
+ActiveRecord::Schema.define(version: 20150328044624) do
 
   create_table "air_moistures", force: :cascade do |t|
     t.decimal  "min"
@@ -40,6 +40,44 @@ ActiveRecord::Schema.define(version: 20150327155942) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "content_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["content_id"], name: "index_comments_on_content_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "content_images", force: :cascade do |t|
+    t.string   "title"
+    t.string   "link"
+    t.integer  "content_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "content_types", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "content_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contents", force: :cascade do |t|
+    t.string   "title"
+    t.string   "body"
+    t.integer  "content_images_id"
+    t.integer  "content_type_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "contents", ["content_images_id"], name: "index_contents_on_content_images_id"
+  add_index "contents", ["content_type_id"], name: "index_contents_on_content_type_id"
 
   create_table "cultivated_areas", force: :cascade do |t|
     t.string   "name"
@@ -172,6 +210,17 @@ ActiveRecord::Schema.define(version: 20150327155942) do
   end
 
   add_index "rains", ["disease_id"], name: "index_rains_on_disease_id"
+
+  create_table "rates", force: :cascade do |t|
+    t.integer  "score"
+    t.integer  "content_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "rates", ["content_id"], name: "index_rates_on_content_id"
+  add_index "rates", ["user_id"], name: "index_rates_on_user_id"
 
   create_table "region_certainty_factors", force: :cascade do |t|
     t.integer  "region_id"
