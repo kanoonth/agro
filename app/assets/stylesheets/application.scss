@@ -1,2 +1,117 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap/glyphicons";
+
+$maincolor: #12A027;
+
+body{
+	margin-top: 70px
+}
+
+.authenticate-nav{
+	float: right;
+}
+.imagine-nav{
+	margin-top: -50px;
+}
+
+.container-navbar{
+	float: right;
+}
+
+.nav-li{
+	float: right;
+	margin-right: 10px;
+}
+
+.nav-wrapper{
+	max-width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.name-web{
+		float: left;
+		font-size: 90px;
+	}
+
+.input-search{
+		float: right;
+		max-width: 500px;
+	}
+
+.btn-search{
+	height: 34px;
+}
+
+@media screen and (max-width: 769px) {
+	 .container-navbar{
+		float: none;
+	}
+
+	.nav-btn{
+		float: left;
+	}
+
+	.nav-wrapper{
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+}
+
+
+/*Log in*/
+
+
+.login-container{
+	margin-top: 10px;
+	background-color: lighten($maincolor,50%);
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 15px;
+	text-align: left;
+	min-height: 300px;
+	max-width: 400px;
+	width: 30%;
+}
+
+.login-component{
+	max-width: 300px;
+	margin-left: 10% !important;
+}
+
+.signup-field{
+	max-width: 300px;
+}
+
+@media screen and (max-width: 1300px) {
+
+	.login-container{
+		min-width: 400px;
+	}
+	.signup-container{
+		min-width: 400px;
+	}
+}
+
+
+/*SIGNUP*/
+
+.signup-component{
+	max-width: 300px;
+	margin-left: auto;
+	margin-right: auto; 
+}
+
+.signup-container{
+	margin-top: 10px;
+	background-color: lighten($maincolor,50%);
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 15px;
+	text-align: left;
+	min-height: 300px;
+	max-width: 400px;
+	width: 30%;
+}
