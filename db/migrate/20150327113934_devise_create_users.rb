@@ -2,7 +2,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       ## Database authenticatable
-      t.string :username,              null: false, default: ""
+      t.string :username, null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -32,10 +32,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :first_name
       t.string :last_name
-      t.string :tel
-      t.string :identity_number
+      t.string :phone_number
+      t.string :identification_number
       t.date :birth_date
-
 
       t.timestamps
     end
