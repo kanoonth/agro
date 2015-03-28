@@ -104,68 +104,89 @@ class Notification < ActiveRecord::Base
   	cf1 + cf2 - cf1 * cf2
   end
 
-  def self.predict(age,phosphoru,nitrogen,potassium,temperature,rain,wind,air_moisture,soil_moisture,
-      region_name,ecology_name,area_type_name,plantation_name,soil_type_name)
+  def self.get_factor(cultivated_area)
+
+    factor = Hash.new
+    w_api = Wunderground.new("d326db8a4068ab73")
+    wun = w_api.forecast_and_conditions_for(cultivated_area.latitude.to_s + "," + cultivated_area.longitude.to_s)['current_observation']
+    factor['temperature'] = wun['temp_c']
+    factor['rain'] = wun['precip_today_metric'].to_f
+    factor['wind'] = wun['wind_kph']
+    am = wun['relative_humidity']
+    am["%"] = ""
+    factor['air_moisture'] = am.to_f
+    factor['region'] = cultivated_area.province.region.name
+    factor['plantation'] = cultivated_area.plantation.name
+    factor['age'] = (Date.current - cultivated_area.plantation_date).to_i
+    factor['area_type'] = cultivated_area.area_type.name
+    factor['soil_type'] = cultivated_area.soil_type.name
+
+    factor
+  end
+
+  def self.predict(factor = {})
+    # age,phosphoru,nitrogen,potassium,temperature,rain,wind,air_moisture,soil_moisture,
+    # region_name,ecology_name,area_type_name,plantation_name,soil_type_name)
    	# age = Date.parse(Time.now.to_s) - date 
    	diseases = Hash.new
-   	age = 10
-   	region_name = "East"
-   	temperature = 25
-    wind = 5
-    rain = 0
-    ecology_name = "Ecology_A"
-    soil_mositure = 15
-    air_mositure = 70
-    area_type_name = "AreaType_A"
-    plantation_name = "Plantation_A"
-    soil_type_name = "SoilType_A"
-    phosphoru = 8
-    nitrogen = 3
-    potassium = 5
+   	# age = 10
+   	# region_name = "East"
+   	# temperature = 25
+    # wind = 5
+    # rain = 0
+    # ecology_name = "Ecology_A"
+    # soil_mositure = 15
+    # air_mositure = 70
+    # area_type_name = "AreaType_A"
+    # plantation_name = "Plantation_A"
+    # soil_type_name = "SoilType_A"
+    # phosphoru = 8
+    # nitrogen = 3
+    # potassium = 5
 
    	Disease.all.each do |disease|
       cf = 0
 
-      stage_cf = get_stage_cf(disease, age)
+      stage_cf = get_stage_cf(disease, factor['age'])
       cf = union_cf(cf, stage_cf)
       
-      region_cf = get_region_cf(disease ,region_name)
+      region_cf = get_region_cf(disease ,factor['region_name'])
       cf = union_cf(cf, region_cf)
 
-      ecology_cf = get_ecology_cf(disease, ecology_name)
+      ecology_cf = get_ecology_cf(disease, factor['ecology_name'])
       cf = union_cf(cf, ecology_cf)
 
-      area_type_cf = get_area_type_cf(disease, area_type_name)
+      area_type_cf = get_area_type_cf(disease, factor['area_type_name'])
       cf = union_cf(cf, area_type_cf)
 
-      plantation_cf = get_plantation_cf(disease, plantation_name)
+      plantation_cf = get_plantation_cf(disease, factor['plantation_name'])
       cf = union_cf(cf, plantation_cf)
 
-      phosphoru_cf = get_phosphoru_cf(disease, phosphoru, age)
+      phosphoru_cf = get_phosphoru_cf(disease, factor['phosphoru'], factor['age'])
       cf = union_cf(cf, phosphoru_cf)
 
-      nitrogen_cf = get_nitrogen_cf(disease, nitrogen, age)
+      nitrogen_cf = get_nitrogen_cf(disease, factor['nitrogen'], factor['age'])
       cf = union_cf(cf, nitrogen_cf)
 
-      potassium_cf = get_potassium_cf(disease, potassium, age)
+      potassium_cf = get_potassium_cf(disease, factor['potassium'], factor['age'])
       cf = union_cf(cf, potassium_cf)
       
-      soil_type_cf = get_soil_type_cf(disease, soil_type_name)
+      soil_type_cf = get_soil_type_cf(disease, factor['soil_type_name'])
       cf = union_cf(cf, soil_type_cf)
 
-      temperature_cf = get_rtw_cf(temperature, disease.temperature)
+      temperature_cf = get_rtw_cf(factor['temperature'], disease.temperature)
 	    cf = union_cf(cf, temperature_cf) 
 
-      rain_cf = get_rtw_cf(rain, disease.rain)
+      rain_cf = get_rtw_cf(factor['rain'], disease.rain)
       cf = union_cf(cf, rain_cf)
 
-      wind_cf = get_rtw_cf(wind, disease.wind)
+      wind_cf = get_rtw_cf(factor['wind'], disease.wind)
       cf = union_cf(cf, wind_cf) 
 
-      air_moisture_cf = get_rtw_cf(wind, disease.air_moisture)
+      air_moisture_cf = get_rtw_cf(factor['air_moisture'], disease.air_moisture)
       cf = union_cf(cf, air_moisture_cf) 
 
-      soil_moisture_cf = get_rtw_cf(wind, disease.soil_moisture)
+      soil_moisture_cf = get_rtw_cf(factor['wind'], disease.soil_moisture)
       cf = union_cf(cf, soil_moisture_cf) 
 
    	  diseases[disease.name] = cf

@@ -6,6 +6,9 @@ class CreateCultivatedAreas < ActiveRecord::Migration
       t.decimal :longitude
       t.references :plantation, index: true
       t.references :user, index:true
+      t.references :area_type, index:true
+      t.references :soil_type, index:true
+      t.references :province, index:true
       t.date :plantation_date
 
 
