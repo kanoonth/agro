@@ -64,5 +64,5 @@ Rails.application.routes.draw do
   root 'notifications#predict'
 
   post 'notifications/predict' => 'notifications#get_predicted_diseases'
- 
+
 end
