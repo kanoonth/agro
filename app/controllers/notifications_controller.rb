@@ -70,23 +70,23 @@ class NotificationsController < ApplicationController
   end
 
   def get_predicted_diseases
-    age = params[:age]
-    phosphoru = params[:phosphoru]
-    nitrogen = params[:nitrogen]
-    potassium = params[:potassium]
-    temperature = params[:temperature]
-    rain = params[:rain]
-    wind = params[:wind]
-    air_moisture = params[:air_moisture]
-    soil_moisture = params[:soil_moisture]
-    region_name = params[:notification][:region_name]
-    ecology_name = params[:notification][:ecology_name]
-    area_type_name = params[:notification][:area_type_name]
-    plantation_name = params[:notification][:plantation_name]
-    soil_type_name = params[:notification][:soil_type_name]
+    factor = {}
+    factor['age'] = params[:age]
+    factor['phosphoru'] = params[:phosphoru]
+    factor['nitrogen'] = params[:nitrogen]
+    factor['potassium'] = params[:potassium]
+    factor['temperature'] = params[:temperature]
+    factor['rain'] = params[:rain]
+    factor['wind'] = params[:wind]
+    factor['air_moisture'] = params[:air_moisture]
+    factor['soil_moisture'] = params[:soil_moisture]
+    factor['region_name'] = params[:notification][:region_name]
+    factor['ecology_name'] = params[:notification][:ecology_name]
+    factor['area_type_name'] = params[:notification][:area_type_name]
+    factor['plantation_name'] = params[:notification][:plantation_name]
+    factor['soil_type_name'] = params[:notification][:soil_type_name]
 
-    render :json => Notification.predict(age,phosphoru,nitrogen,potassium,temperature,rain,wind,air_moisture,soil_moisture,
-      region_name,ecology_name,area_type_name,plantation_name,soil_type_name)
+    render :json => Notification.predict(factor)
   end
 
   private
