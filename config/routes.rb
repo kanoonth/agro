@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
   resources :cultivated_areas
 
+  resources :rates
+
+  resources :contents
+
+  resources :content_images
+
+  resources :content_types
+
+  resources :comments
+
   devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations" }
 
   resources :notifications
