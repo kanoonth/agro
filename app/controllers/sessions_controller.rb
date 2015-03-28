@@ -15,7 +15,7 @@ class SessionsController < Devise::SessionsController
       format.json do 
         resource.auth_token = Digest::SHA1.hexdigest([Time.now, rand].join)
         resource.save!
-        render :json => resource.auth_token 
+        render :json => resource.auth_token
       end
     end
   end
@@ -24,21 +24,18 @@ class SessionsController < Devise::SessionsController
     resource = User.find_by_username request.headers['X-User-Username']
     resource.auth_token = nil
     resource.save
-
-    respond_to_on_destroy
   end
 
   private 
     def verify_signed_out_user
-      unless json_request?
-        if all_signed_out?
-          set_flash_message :notice, :already_signed_out if is_flashing_format?
-
-          respond_to_on_destroy
-        end
-      else
+      if json_request?
         json_destroy
-      end 
+      end
+      if all_signed_out?
+        set_flash_message :notice, :already_signed_out if is_flashing_format?
+
+        respond_to_on_destroy
+      end
     end
 
     def json_request?
