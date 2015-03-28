@@ -1,10 +1,11 @@
 class CultivatedAreasController < ApplicationController
+  before_action :authenticate
   before_action :set_cultivated_area, only: [:show, :edit, :update, :destroy]
 
   # GET /cultivated_areas
   # GET /cultivated_areas.json
   def index
-    @cultivated_areas = CultivatedArea.all
+    @cultivated_areas = CultivatedArea.where(user: current_user)
   end
 
   # GET /cultivated_areas/1
@@ -15,16 +16,19 @@ class CultivatedAreasController < ApplicationController
   # GET /cultivated_areas/new
   def new
     @cultivated_area = CultivatedArea.new
+    @plantations = Plantation.all
   end
 
   # GET /cultivated_areas/1/edit
   def edit
+    @plantations = Plantation.all
   end
 
   # POST /cultivated_areas
   # POST /cultivated_areas.json
   def create
     @cultivated_area = CultivatedArea.new(cultivated_area_params)
+    @cultivated_area.user = current_user
 
     respond_to do |format|
       if @cultivated_area.save
