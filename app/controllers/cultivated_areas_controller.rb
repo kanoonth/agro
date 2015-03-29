@@ -32,7 +32,13 @@ class CultivatedAreasController < ApplicationController
   # POST /cultivated_areas.json
   def create
     @cultivated_area = CultivatedArea.new(cultivated_area_params)
-    @cultivated_area.user = current_user
+
+    user = current_user
+    unless current_user.nil? and params[:username]
+      user = User.find_by_username( params[:username] )
+    end
+
+    @cultivated_area.user = user
 
     respond_to do |format|
       if @cultivated_area.save
