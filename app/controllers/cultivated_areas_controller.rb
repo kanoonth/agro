@@ -5,7 +5,11 @@ class CultivatedAreasController < ApplicationController
   # GET /cultivated_areas
   # GET /cultivated_areas.json
   def index
-    @cultivated_areas = CultivatedArea.where(user: current_user)
+    user = current_user
+    unless current_user.nil? and params[:username]
+      user = User.find_by_username( params[:username] )
+    end
+    @cultivated_areas = CultivatedArea.where(user: user)
   end
 
   # GET /cultivated_areas/1

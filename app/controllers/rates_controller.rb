@@ -25,6 +25,7 @@ class RatesController < ApplicationController
   # POST /rates.json
   def create
     @rate = Rate.new(rate_params)
+    @rate.user = current_user
 
     respond_to do |format|
       if @rate.save
@@ -69,6 +70,6 @@ class RatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rate_params
-      params.require(:rate).permit(:score, :content_id, :user_id)
+      params.require(:rate).permit(:score, :content_id)
     end
 end

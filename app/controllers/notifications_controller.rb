@@ -1,9 +1,15 @@
 class NotificationsController < ApplicationController
+  before_action :authenticate, except: [:predict]
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
 
   # GET /notifications
   # GET /notifications.json
   def index
+    # user = current_user
+    # unless current_user.nil? and params[:username]
+    #   user = User.find_by_username( params[:username] )
+    # end
+    # @notifications = Notification.where(user: user)
     @notifications = Notification.all
   end
 
