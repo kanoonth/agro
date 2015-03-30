@@ -1,59 +1,70 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="user-wrapper">
+  <div class="user-container">
+    <h2  class="user-component">Edit <%= resource_name.to_s.humanize %></h2>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field user-component">
+        <%= f.label :username ,class: "" %><br />
+        <%= f.text_field :username, autofocus: true ,class: " user-field form-control" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field  user-component">
+        <%= f.label :password ,class: "" %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "off" ,class: " user-field form-control" %>
+      </div>
+
+      <div class="field  user-component">
+        <%= f.label :password_confirmation ,class: "" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" ,class: " user-field form-control" %>
+      </div>
+
+      <div class="field  user-component">
+        <%= f.label :current_password ,class: "" %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password, autocomplete: "off" ,class: " user-field form-control" %>
+      </div>
+
+      <div class="field user-component">
+        <%= f.label 'ชื่อ' ,class: "" %><br />
+        <%= f.text_field :first_name ,class: " user-field form-control" %>
+      </div>
+
+      <div class="field user-component">
+        <%= f.label 'นามสกุล' ,class: "" %><br />
+        <%= f.text_field :last_name ,class: " user-field form-control" %>
+      </div>
+
+      <div class="field user-component">
+        <%= f.label 'เบอร์โทรศัพท์' ,class: "" %><br />
+        <%= f.text_field :phone_number ,class: " user-field form-control" %>
+      </div>
+
+      <div class="field user-component">
+        <%= f.label 'รหัสประจำตัวประชาชน' ,class: "" %><br />
+        <%= f.text_field :identification_number ,class: " user-field form-control" %>
+      </div>
+
+      <div class="actions user-component">
+        <%= f.submit "Update" ,class: " user-field" %>
+      </div>
+    <% end %>
+
+    <h3 class=" user-component">Cancel my account</h3>
+
+    <p class=" user-component">Unhappy? 
+    <div class="user-component">
+    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,class: "user-component" %>
+    </div>
+    </p>
+
+    <div class=" user-component">
+      <%= link_to "Back", :back ,class: "user-component" %>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'ชื่อ' %><br />
-    <%= f.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'นามสกุล' %><br />
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'เบอร์โทรศัพท์' %><br />
-    <%= f.text_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'รหัสประจำตัวประชาชน' %><br />
-    <%= f.text_field :identification_number %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

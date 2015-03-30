@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 <!-- NAV BAR -->
@@ -37,17 +38,19 @@
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
 		          <ul class="nav navbar-nav ">
-					      <li class="active"><a href="">หน้าหลัก</a></li>
-					      <li>
+					      <li class="nav-li" id="">
+					      	<a href="">หน้าหลัก</a>
+					      </li>
+					      <li class="nav-li" id="contents">
 					      <%= link_to "ข่าว", contents_path %>
 					      </li>
-					      <li>
+					      <li class="nav-li" id="notifications">
 					      	<%= link_to "แจ้งเตือน", notifications_path %>
 					      </li>
-					      <li>
+					      <li class="nav-li" id="cultivated_areas">
 					      	<%= link_to "พื้นที่", cultivated_areas_path %>
 					      </li>
-						  	<li>
+						  	<li class="nav-li" id="user">
 						  		<%= link_to "ประวัติ", edit_user_registration_path(current_user) %>
 						  	</li>
 				  		</ul>
@@ -58,18 +61,21 @@
 
     <div class="page-wrapper">
 	    <!-- HEADER -->
-	    <div class="container-fluid" >
-	    	<div class="top-content">
-			    <div class="name-web">
-			    	Agro
-			    </div>
-		    	<div class="input-group input-search">
-			      <input type="search" class="form-control" placeholder="Search for...">
-				      <span class="input-group-btn">
-				        <button class="btn btn-default btn-search" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-				      </span>
-		    	</div>
-		    </div>	
+	    <div class="header-wrapper">
+		    <div class="container-fluid" >
+		    	<div class="top-content">
+		    		<div class="input-group input-search">
+				      <input type="search" class="form-control" placeholder="Search for...">
+					      <span class="input-group-btn">
+					        <button class="btn btn-default btn-search" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+					      </span>
+			    	</div>
+				    <div class="name-web">
+				    	<%= image_tag "agro-color-logo.png" %>
+				    </div>
+			    	
+			    </div>	
+		    </div>
 	    </div>
 	
   
@@ -78,13 +84,19 @@
 </div>
 
 <!-- FOOTER -->
-	<footer class="navbar navbar-inverse navbar-fixed-bottom">
-		<div class="container-fluid container-navbar">
-			<div class="navbar-header">
+	<!-- <footer class="footer">
+		<div class="container">
+			<div class="text-muted">
 				KANOON
 	    	</div>
 		</div>
-    </footer>
+    </footer> -->
 
 </body>
 </html>
+
+<script>
+$(function() {
+
+});
+</script>
