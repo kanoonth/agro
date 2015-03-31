@@ -1,3 +1,35 @@
-// Place all the styles related to the Notifications controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.noti-show {
+	margin-right: auto;
+	margin-left: auto;
+	width: 80%;
+
+}
+
+.noti-index {
+	margin-right: auto;
+	margin-left: auto;
+	width: 80%;
+}
+
+@media screen and (max-width: 769px) {
+	.noti-show {
+	width: 100%;
+	}
+
+	.noti-index {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 1280px) {
+	.noti-show {
+	margin-right: 20px;
+	width: 80%;
+	}
+
+	.noti-index {
+		width: 80%;
+	}
+}
+
+

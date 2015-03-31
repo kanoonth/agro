@@ -1,11 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap/glyphicons";
+@import "notifications.scss";
 
-$maincolor: #767F70;
+$maincolor: #116c4b;
 $colorA: #BCFF94;
 $colorB: #ECFFE0;
-$colorC: #BDCCB3;
+/*$colorC: #BDCCB3;*/
+$colorC: #FFFFFF;
 $shadow: 0px 6px 6px 4px rgba(0,0,0,0.5);
 body{
 	background-color: $maincolor;

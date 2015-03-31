@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
-
+<!-- 
 <p>
   <strong>User:</strong>
   <%= @notification.user_id %>
-</p>
-
-<p>
-  <strong>Disease:</strong>
-  <%= @notification.disease %>
-</p>
-
-<p>
-  <strong>Cf:</strong>
-  <%= @notification.cf %>
-</p>
-
+</p> -->
+<div class="noti-show">
+	<h1>
+	 <!--  <strong>Disease:</strong> -->
+	  โรคที่เป็น
+	</h1>
+	<p>
+	  <strong>Cf:</strong>
+	  <%= @notification.cf %>
+	</p>
+	<p>
+		<%= @notification.disease.name %>
+	</p>
+</div>
 <%= link_to 'Edit', edit_notification_path(@notification) %> |
 <%= link_to 'Back', notifications_path %>
