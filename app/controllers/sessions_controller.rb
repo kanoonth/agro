@@ -22,8 +22,10 @@ class SessionsController < Devise::SessionsController
 
   def json_destroy
     resource = User.find_by_username request.headers['X-User-Username']
-    resource.auth_token = nil
-    resource.save
+    if resource.auth_token == request.headers['X-Token']
+      resource.auth_token = nil
+      resource.save
+    end
   end
 
   private 
