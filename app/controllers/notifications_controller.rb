@@ -14,6 +14,7 @@ class NotificationsController < ApplicationController
     cultivated_areas.each do |cultivated_area|
       @notifications << Notification.where(cultivated_area: cultivated_area)
     end
+    @notifications.flatten!
   end
 
   # GET /notifications/1

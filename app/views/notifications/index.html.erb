@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @notifications.flatten.each do |notification| %>
+    <% @notifications.each do |notification| %>
       <tr>
         <td><%= notification.cultivated_area.user.name %></td>
         <td><%= notification.cultivated_area.name %></td>
