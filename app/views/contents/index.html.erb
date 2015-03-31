@@ -5,6 +5,18 @@
 <div class="container">
 <table>
   <tbody>
+    <div id="sliderFrame">
+        <div id="slider">
+            <%= image_tag "image-slider-1.jpg" ,alt:"ice"%>
+            <%= image_tag "image-slider-2.jpg" ,alt:"ice"%>
+            <%= image_tag "image-slider-3.jpg" %>
+            <%= image_tag "image-slider-4.jpg" %>
+            <%= image_tag "image-slider-5.jpg" %>
+        </div>
+        <div id="htmlcaption" style="display: none;">
+            <em>HTML</em> caption. Link to <a href="http://www.google.com/">Google</a>.
+        </div>
+    </div>
     <% @contents.each do |content| %>
       <tr>
         <td>
