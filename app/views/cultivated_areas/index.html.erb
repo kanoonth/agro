@@ -5,7 +5,7 @@
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>ชื่อพื้นที่</th>
+      <th>ชื่อพื้นที่เพาะปลูก</th>
       <th>ละติจูด</th>
       <th>ลองติจูด</th>
       <th>วิธีการเพาะปลูก</th>
@@ -20,7 +20,7 @@
         <td><%= cultivated_area.name %></td>
         <td><%= cultivated_area.latitude %></td>
         <td><%= cultivated_area.longitude %></td>
-        <td><%= cultivated_area.plantation %></td>
+        <td><%= cultivated_area.plantation.name %></td>
         <td><%= cultivated_area.plantation_date %></td>
         <td><%= link_to '', cultivated_area, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'ต้องการที่จะลบพื้นที่เพาะปลูกใช่หรือไม่?' } %></td>
       </tr>
@@ -30,7 +30,7 @@
 
 <br>
 
-<%= link_to 'New Cultivated area', new_cultivated_area_path %>
+<%= link_to ' เพิ่มพื้นที่เพาะปลูก', new_cultivated_area_path, class: "btn btn-primary btn-lg glyphicon glyphicon-pencil pull-right" %>
 
 <script type="text/javascript">
   $("tr[data-link]").click(function() {

@@ -42,7 +42,7 @@ class CultivatedAreasController < ApplicationController
 
     respond_to do |format|
       if @cultivated_area.save
-        format.html { redirect_to @cultivated_area, notice: 'Cultivated area was successfully created.' }
+        format.html { redirect_to cultivated_areas_path, notice: 'Cultivated area was successfully created.' }
         format.json { render :show, status: :created, location: @cultivated_area }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class CultivatedAreasController < ApplicationController
   def update
     respond_to do |format|
       if @cultivated_area.update(cultivated_area_params)
-        format.html { redirect_to @cultivated_area, notice: 'Cultivated area was successfully updated.' }
+        format.html { redirect_to cultivated_areas_path, notice: 'Cultivated area was successfully updated.' }
         format.json { render :show, status: :ok, location: @cultivated_area }
       else
         format.html { render :edit }
