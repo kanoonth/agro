@@ -5,12 +5,15 @@ class NotificationsController < ApplicationController
   # GET /notifications
   # GET /notifications.json
   def index
-    # user = current_user
-    # unless current_user.nil? and params[:username]
-    #   user = User.find_by_username( params[:username] )
-    # end
-    # @notifications = Notification.where(user: user)
-    @notifications = Notification.all
+    cultivated_areas = current_user.cultivated_areas
+    if current_user.nil? and params[:username]
+      user = User.find_by_username( params[:username] )
+      cultivated_areas = user.cultivated_areas
+    end
+    @notifications = []
+    cultivated_areas.each do |cultivated_area|
+      @notifications << Notification.where(cultivated_area: cultivated_area)
+    end
   end
 
   # GET /notifications/1
@@ -21,6 +24,8 @@ class NotificationsController < ApplicationController
   # GET /notifications/new
   def new
     @notification = Notification.new
+    @diseases = Disease.all
+    @cultivated_areas = CultivatedArea.where(user: current_user)
   end
 
   # GET /notifications/1/edit
@@ -103,6 +108,6 @@ class NotificationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notification_params
-      params.require(:notification).permit(:user_id, :disease_id, :cf)
+      params.require(:notification).permit(:cultivated_area_id, :disease_id, :cf)
     end
 end

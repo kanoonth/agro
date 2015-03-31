@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328044624) do
+ActiveRecord::Schema.define(version: 20150331053723) do
 
   create_table "air_moistures", force: :cascade do |t|
     t.decimal  "min"
@@ -145,13 +145,14 @@ ActiveRecord::Schema.define(version: 20150328044624) do
   add_index "nitrogens", ["stage_id"], name: "index_nitrogens_on_stage_id"
 
   create_table "notifications", force: :cascade do |t|
-    t.integer  "user_id"
     t.integer  "disease_id"
     t.decimal  "cf"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "cultivated_area_id"
   end
 
+  add_index "notifications", ["cultivated_area_id"], name: "index_notifications_on_cultivated_area_id"
   add_index "notifications", ["disease_id"], name: "index_notifications_on_disease_id"
 
   create_table "phosphorus", force: :cascade do |t|

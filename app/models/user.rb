@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
 
   #TODO validate phone with length
   #TODO validate identification number
+
+  def name
+    first_name + " " + last_name
+  end
 end
