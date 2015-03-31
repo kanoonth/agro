@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
   # GET /notifications.json
   def index
     cultivated_areas = current_user.cultivated_areas
-    if current_user.nil? and params[:username]
+    if json_request? and params[:username]
       user = User.find_by_username( params[:username] )
       cultivated_areas = user.cultivated_areas
     end
