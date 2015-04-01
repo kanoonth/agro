@@ -58,12 +58,22 @@
 	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
 	      <span class="sr-only">Toggle navigation</span>
 	    </button>
-	    <a class="navbar-brand" href="#">Flat UI</a>
+	    <a class="navbar-brand" href="#">AGRO</a>
 	  </div>
 	  <div class="collapse navbar-collapse" id="navbar-collapse-01">
 	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#fakelink">Products</a></li>
-	      <li><a href="#fakelink">Features</a></li>
+			<li id="contents">
+				<%= link_to "ข่าว", contents_path %>
+			</li>
+			<li id="notifications">
+				<%= link_to "แจ้งเตือน", notifications_path %>
+			</li>
+			<li id="cultivated_areas">
+				<%= link_to "พื้นที่", cultivated_areas_path %>
+			</li>
+		  	<li id="user">
+		  		<%= link_to "ประวัติ", edit_user_registration_path(current_user) %>
+		  	</li>
 	    </ul>
 	    <form class="navbar-form navbar-right" action="#" role="search">
 	      <div class="form-group">
@@ -73,47 +83,45 @@
 	            <button type="submit" class="btn"><span class="fui-search"></span></button>
 	          </span>
 	        </div>
+	        
 	      </div>
+
 	    </form>
-	  
+	    <ul class="nav navbar-nav navbar-right">
+	      <li>
+	        <% unless current_user %>
+    			<%= link_to ' เข้าสู่ระบบ', new_user_session_path, class: "glyphicon glyphicon-user nav-li" %>
+  			<% else %>
+    			<%= link_to ' ออกจากระบบ', destroy_user_session_path,class: "glyphicon glyphicon-user nav-li" ,:method => :delete %>
+  			<% end %>
+  		  </li>
+			</ul>
+	  </div>
 	</nav><!-- /navbar -->
 
-    <div class="page-wrapper">
-	    <!-- HEADER -->
-	    <div class="header-wrapper">
-		    <div class="container-fluid" >
-		    	<div class="top-content">
-		    		<div class="row">
-					  <div class="col-md-4">
-					  		<div class="name-web">
-						    	<%= image_tag "agro-color-logo.png" %>
-						    </div>
-					  </div>
-					  <div class="col-md-8">
-					  		<%= yield %>
-					  </div>
-					</div>	    	
-			    </div>	
-		    </div>
+	<div class="container">
+    	<div class="row" >
+		 	<div class="col-md-12 logo">
+			  	<center>
+			  		<div class="name-web">
+				    	 <%= image_tag "agro-color.png",width:"300px",height:"300px" %> 
+				    </div>
+				</center>
+			</div>
+	    </div>
+	    <div class="row" >
+		  	<center>
+		  		<%= yield %>
+		  	</center>
 	    </div>
 	</div>
-
-
- <footer class="footer">
-      <div class="container"><br>
-        <p class="text-muted">footer</p>
-      </div>
-    </footer>
-<!-- FOOTER -->
-	<!-- <footer class="footer">
-		<div class="container">
-			<div class="text-muted">
-				KANOON
-	    	</div>
-		</div>
-    </footer> -->
-	
+	<div class="push"></div>
 </body>
+<footer class="footer">
+  <div class="container"><br>
+    <p class="text-muted">footer</p>
+  </div>
+</footer>
 </html>
 
 <script>
