@@ -1,29 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @cultivated_area.name %>
-</p>
+<div>
+  <h1>
+    พื้นที่ <%= @cultivated_area.name %>
+  </h1>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <strong>ละติจูด</strong>
+        </td>
+        <td>
+          <%= @cultivated_area.latitude %>
+        </td>
+      </tr>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @cultivated_area.latitude %>
-</p>
+      <tr>
+        <td>
+          <strong>ลองติจูด</strong>
+        </td>
+        <td>
+          <%= @cultivated_area.longitude %>
+        </td>
+      </tr>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @cultivated_area.longitude %>
-</p>
+      <tr>
+        <td>
+          <strong>วิธีการเพาะปลูก</strong>
+        </td>
+        <td>
+          <%= @cultivated_area.plantation.name %>
+        </td>
+      </tr>
 
-<p>
-  <strong>Plantation:</strong>
-  <%= @cultivated_area.plantation %>
-</p>
+      <tr>
+        <td>
+          <strong>วันที่เริ่มเพาะปลูก</strong>
+        </td>
+        <td>
+          <%= @cultivated_area.plantation_date %>
+        </td>
+      </tr>
 
-<p>
-  <strong>Plantation date:</strong>
-  <%= @cultivated_area.plantation_date %>
-</p>
-
-<%= link_to 'Edit', edit_cultivated_area_path(@cultivated_area) %> |
-<%= link_to 'Back', cultivated_areas_path %>
+    </tbody>
+  </table>
+  <%= link_to 'แก้ไข', edit_cultivated_area_path(@cultivated_area), class: "btn btn-primary btn-lg glyphicon glyphicon-pencil pull-right" %>
+</div>
