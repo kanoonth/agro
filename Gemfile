@@ -24,6 +24,8 @@ gem 'bootstrap-sass'
 
 gem 'whenever', :require => false
 
+gem 'pry-rails', :group => :development
+
 gem 'bootstrap-glyphicons'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
