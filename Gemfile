@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use SCSS for stylesheets
@@ -12,13 +11,21 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem "paperclip"
+
 gem 'devise'
+
 gem 'wunderground'
+
 gem 'geocoder'
 
 gem 'sprockets-rails'
 
 gem 'bootstrap-sass'
+
+gem 'whenever', :require => false
+
+gem 'pry-rails', :group => :development
 
 gem 'bootstrap-glyphicons'
 # Use jquery as the JavaScript library
