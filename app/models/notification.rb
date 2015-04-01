@@ -119,31 +119,14 @@ class Notification < ActiveRecord::Base
     factor['region'] = cultivated_area.province.region.name
     factor['plantation'] = cultivated_area.plantation.name
     factor['age'] = (Date.current - cultivated_area.plantation_date).to_i
-    factor['area_type'] = cultivated_area.area_type.name
-    factor['soil_type'] = cultivated_area.soil_type.name
+    # factor['area_type'] = cultivated_area.area_type.name
+    # factor['soil_type'] = cultivated_area.soil_type.name
 
     factor
   end
 
   def self.predict(factor = {})
-    # age,phosphoru,nitrogen,potassium,temperature,rain,wind,air_moisture,soil_moisture,
-    # region_name,ecology_name,area_type_name,plantation_name,soil_type_name)
-   	# age = Date.parse(Time.now.to_s) - date 
    	diseases = Hash.new
-   	# age = 10
-   	# region_name = "East"
-   	# temperature = 25
-    # wind = 5
-    # rain = 0
-    # ecology_name = "Ecology_A"
-    # soil_mositure = 15
-    # air_mositure = 70
-    # area_type_name = "AreaType_A"
-    # plantation_name = "Plantation_A"
-    # soil_type_name = "SoilType_A"
-    # phosphoru = 8
-    # nitrogen = 3
-    # potassium = 5
 
    	Disease.all.each do |disease|
       cf = 0
@@ -193,5 +176,19 @@ class Notification < ActiveRecord::Base
    	  diseases[disease.name] = cf
     end
     diseases
+  end
+
+  def self.create_notification
+    @cultivated_areas = CultivatedArea.all
+    @cultivated_areas.each do |cultivated_area|
+      diseases = self.predict self.get_factor cultivated_area
+      diseases.each do |disease|
+        d = Disease.find_by_name(disease[0])
+        cf = disease[1]
+        if cf > 0.95
+          Notification.create!(cultivated_area: cultivated_area,disease: d, cf: cf)
+        end
+      end
+    end
   end
 end

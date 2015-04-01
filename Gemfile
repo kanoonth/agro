@@ -13,12 +13,16 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'devise'
+
 gem 'wunderground'
+
 gem 'geocoder'
 
 gem 'sprockets-rails'
 
 gem 'bootstrap-sass'
+
+gem 'whenever', :require => false
 
 gem 'bootstrap-glyphicons'
 # Use jquery as the JavaScript library
