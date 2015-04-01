@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331053723) do
+ActiveRecord::Schema.define(version: 20150401083526) do
 
   create_table "air_moistures", force: :cascade do |t|
     t.decimal  "min"
@@ -54,10 +54,13 @@ ActiveRecord::Schema.define(version: 20150331053723) do
 
   create_table "content_images", force: :cascade do |t|
     t.string   "title"
-    t.string   "link"
     t.integer  "content_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "content_types", force: :cascade do |t|
