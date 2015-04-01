@@ -8,14 +8,13 @@
         <th>Cf</th>
         <th>Disease</th>
         <th colspan="3"></th>
+
       </tr>
     </thead>
 
     <tbody>
       <% @notifications.each do |notification| %>
         <tr data-link="<%= 'notifications/' + notification.id.to_s %>">
-
-          <td class="col-xs-3"><%= notification.user_id %></td>
           <td class="col-xs-3"><%= notification.cf %></td>
           <td class="col-xs-6"><%= notification.disease.name %></td>
           <td><%= link_to 'Show', notification %></td>

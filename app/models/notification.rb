@@ -1,5 +1,6 @@
 class Notification < ActiveRecord::Base
   belongs_to :disease
+  belongs_to :cultivated_area
 
   def self.get_stage_cf(disease, age)
   	stage = disease.stages.where("min_day <= ? AND max_day >= ?", age, age).first

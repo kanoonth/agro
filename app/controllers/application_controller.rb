@@ -25,14 +25,13 @@ class ApplicationController < ActionController::Base
   	end
   end
 
-  private
+  def json_request?
+    request.format == 'application/json'
+  end
 
-    def json_request?
-      request.format == 'application/json'
-    end
+  private
 
     def configure_permitted_parameters
 	  devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :password, :password_confirmation, :first_name, :last_name, :phone_number, :identification_number) }
 	end
-
 end

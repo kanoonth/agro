@@ -2,23 +2,28 @@
 
 <h1>ข่าว</h1>
 
-<div class="container">
-<table>
-  <tbody>
-    <% @contents.each do |content| %>
-      <tr>
-        <td>
-          <div>
-            <a href="<%= content_path(content) %>">
-              <%= content.title %><br>
-              <%= content.body[0..40] + "... " %>
-              <hr>
-            </a>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="contents-container col-md-8">
 
+  <% @contents.each do |content| %>
+    <div class="content-container">
+      <h3>
+        <a href="<%= content_path(content) %>">
+          <%= content.title %>
+        </a>
+      </h3>
+      <div class="content-img">
+        <a href="<%= content_path(content) %>">
+          <%= image_tag "http://www.bloggang.com/data/p/pantheratigris/picture/1339949648.jpg" , width: "100%" %>
+        </a>
+      </div>
+      
+      <br>
+      <div class="content-body">
+        <h6>
+          <%= content.body[0..40] + "... " %>
+        </h6>
+      </div>
+
+    </div>
+  <% end %>
 </div>

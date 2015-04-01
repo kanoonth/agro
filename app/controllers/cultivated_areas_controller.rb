@@ -6,7 +6,7 @@ class CultivatedAreasController < ApplicationController
   # GET /cultivated_areas.json
   def index
     user = current_user
-    unless current_user.nil? and params[:username]
+    if current_user.nil? and params[:username]
       user = User.find_by_username( params[:username] )
     end
     @cultivated_areas = CultivatedArea.where(user: user)
@@ -34,7 +34,7 @@ class CultivatedAreasController < ApplicationController
     @cultivated_area = CultivatedArea.new(cultivated_area_params)
 
     user = current_user
-    unless current_user.nil? and params[:username]
+    if current_user.nil? and params[:username]
       user = User.find_by_username( params[:username] )
     end
 

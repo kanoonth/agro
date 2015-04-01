@@ -14,4 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require js-image-slider
+//= require flat-ui
+//= require flat-ui.min
+//= require html5shiv
+//= require respond.min
+//= require video
 //= require_tree .
