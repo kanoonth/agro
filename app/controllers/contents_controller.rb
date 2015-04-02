@@ -26,6 +26,13 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
 
+    if params[:content][:content_image]
+      @content_image = ContentImage.new
+      @content_image.image = params[:content][:content_image]
+      @content_image.save
+      @content.content_images << @content_image
+    end
+
     respond_to do |format|
       if @content.save
         format.html { redirect_to @content, notice: 'Content was successfully created.' }
@@ -69,6 +76,6 @@ class ContentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def content_params
-      params.require(:content).permit(:title, :body, :content_images_id, :content_type_id)
+      params.require(:content).permit(:title, :body, :content_type_id)
     end
 end

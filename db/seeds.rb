@@ -32,12 +32,12 @@ SoilType.create( name: "ดินทราย" )
 
 
 ### Dump Content for testing.
-ContentType.create( name: "rice")
-ContentImage.create( title: "ggggg", link: "www.www.www")
-content = Content.new( title: "aslkdskdf", body: "klasjfsaf")
-content.content_type = ContentType.last
-content.content_images << ContentImage.last
-content.save
+# ContentType.create( name: "rice")
+# ContentImage.create( title: "ggggg" )
+# content = Content.new( title: "aslkdskdf", body: "klasjfsaf")
+# content.content_type = ContentType.last
+# content.content_images << ContentImage.last
+# content.save
 
 rate = Rate.new( score: 5 )
 rate.content = Content.last

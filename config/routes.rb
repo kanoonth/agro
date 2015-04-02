@@ -5,11 +5,7 @@ Rails.application.routes.draw do
 
   resources :rates
 
-  resources :contents
-
-  resources :content_images
-
-  resources :content_types
+  resources :contents, except: [:edit, :update]
 
   resources :comments
 
