@@ -34,15 +34,15 @@ class ContentsController < ApplicationController
       @content.content_images << @content_image
     end
 
-    # respond_to do |format|
-    #   if @content.save
-    #     format.html { redirect_to @content, notice: 'Content was successfully created.' }
-    #     format.json { render :show, status: :created, location: @content }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @content.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @content.save
+        format.html { redirect_to @content, notice: 'Content was successfully created.' }
+        format.json { render :show, status: :created, location: @content }
+      else
+        format.html { render :new }
+        format.json { render json: @content.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /contents/1
