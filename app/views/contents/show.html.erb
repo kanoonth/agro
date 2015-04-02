@@ -7,7 +7,7 @@
 	</div>
 
  	<div class="content-img">
-      <%= image_tag "http://www.bloggang.com/data/p/pantheratigris/picture/1339949648.jpg" %>
+      <%= image_tag content.content_images.first.image.url(:thumb) unless content.content_images.empty? %>
     </a>
   </div>
   <br>
