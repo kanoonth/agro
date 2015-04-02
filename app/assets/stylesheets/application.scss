@@ -4,11 +4,24 @@
 @import "generic";
 @import "js-image-slider";
 @import "flat-ui";
+@import "notifications.scss";
+@import "contents.scss";
 @import "cultivated_areas.scss";
+
 
 $maincolor: #ffffff;
 $bg-color: #27AE60;
 $shadow: 0px 6px 6px 4px rgba(0,0,0,0.5);
+
+%margin-auto {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+body {
+	background-color: $maincolor;
+}
+
 html,body{
 	background-color: $maincolor;
 	min-height: 100%;
@@ -28,11 +41,13 @@ html,body{
 	min-width: 100%;
 	margin: 0 auto -4em;
 }
+
 .navbar {
 	margin-bottom: 50px;
 
 }
 .page-wrapper{
+
 	min-height: 100%;
 	height: 100%;
 	/*margin-top: 50px;*/
@@ -82,9 +97,10 @@ html,body{
 
 .name-web{
 	max-width: 300px;
-		margin-left: auto;
-		margin-right: auto;
-}
+		/*margin-left: auto;
+		margin-right: auto;*/
+		/*float: left;*/
+	}
 
 .input-search{
 		padding-top: 30px;
@@ -247,3 +263,6 @@ html,body{
 .user-field{
 	max-width: 300px;
 }
+
+
+

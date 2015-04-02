@@ -1,24 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @content.title %>
-</p>
+	<div class="content-title">
+		<h1>
+	  	<%= @content.title %>
+		</h1>
+	</div>
 
-<p>
-  <strong>Body:</strong>
+ 	<div class="content-img">
+      <%= image_tag @content.content_images.first.image.url(:thumb) unless @content.content_images.empty? %>
+    </a>
+  </div>
+  <br>
   <%= @content.body %>
-</p>
 
-<p>
-  <strong>Content images:</strong>
-  <%= @content.content_images %>
-</p>
 
-<p>
-  <strong>Content type:</strong>
-  <%= @content.content_type %>
-</p>
-
-<%= link_to 'Edit', edit_content_path(@content) %> |
-<%= link_to 'Back', contents_path %>

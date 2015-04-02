@@ -1,19 +1,14 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Cultivated Area:</strong>
-  <%= @notification.cultivated_area.name %>
-</p>
-
-<p>
-  <strong>Disease:</strong>
-  <%= @notification.disease %>
-</p>
-
-<p>
-  <strong>Cf:</strong>
-  <%= @notification.cf %>
-</p>
-
-<%= link_to 'Edit', edit_notification_path(@notification) %> |
-<%= link_to 'Back', notifications_path %>
+<div class="noti-show">
+	<h1>
+	 <!--  <strong>Disease:</strong> -->
+	  โรคที่เป็น
+	</h1>
+	<p>
+	  <strong>Cf:</strong>
+	  <%= @notification.cf %>
+	</p>
+	<p>
+		<%= @notification.disease.name %>
+	</p>
+</div>

@@ -2,35 +2,28 @@
 
 <h1>ข่าว</h1>
 
-<div class="container">
-<table>
-  <tbody>
-    <div id="sliderFrame">
-        <div id="slider">
-            <%= image_tag "image-slider-1.jpg" ,alt:"ice"%>
-            <%= image_tag "image-slider-2.jpg" ,alt:"ice"%>
-            <%= image_tag "image-slider-3.jpg" %>
-            <%= image_tag "image-slider-4.jpg" %>
-            <%= image_tag "image-slider-5.jpg" %>
-        </div>
-        <div id="htmlcaption" style="display: none;">
-            <em>HTML</em> caption. Link to <a href="http://www.google.com/">Google</a>.
-        </div>
-    </div>
-    <% @contents.each do |content| %>
-      <tr>
-        <td>
-          <div>
-            <a href="<%= content_path(content) %>">
-              <%= content.title %><br>
-              <%= content.body[0..40] + "... " %>
-              <hr>
-            </a>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="contents-container col-md-8">
 
+  <% @contents.each do |content| %>
+    <div class="content-container">
+      <h3>
+        <a href="<%= content_path(content) %>">
+          <%= content.title %>
+        </a>
+      </h3>
+      <div class="content-img">
+        <a href="<%= content_path(content) %>">
+          <%= image_tag content.content_images.first.image.url(:thumb) unless content.content_images.empty? %>
+        </a>
+      </div>
+      
+      <br>
+      <div class="content-body">
+        <h6>
+          <%= content.body[0..40] + "... " %>
+        </h6>
+      </div>
+
+    </div>
+  <% end %>
 </div>

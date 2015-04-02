@@ -1,3 +1,31 @@
-// Place all the styles related to the Contents controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.contents-container {
+  margin-bottom: 50px;
+  .content-container {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(17,108,75,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(17,108,75,1);
+    box-shadow: 0px 0px 5px 0px rgba(17,108,75,1);
+    /*max-width: 80%;*/
+    padding: 5px;
+    margin-bottom: 20px;
+    .content-img {
+      @extend %margin-auto;
+      max-width: 98%;
+    } 
+  }
+}  
+
+.content-img {
+	max-width: 90%;
+}	
+
+@media screen and (max-width: 769px) {
+  .content-img {
+    max-width: 100%;
+  } 
+}
+
+/*.content-title {
+  
+  border-bottom: 2px solid ;
+}*/
+
