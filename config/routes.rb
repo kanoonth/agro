@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
   resources :cultivated_areas
 
-  resources :rates
+  resources :rates, except: [:edit, :update]
 
   resources :contents, except: [:edit, :update]
 
-  resources :comments
+  resources :comments, except: [:edit, :update]
 
-  resources :notifications
+  resources :notifications, except: [:edit, :update]
 
   root 'notifications#predict'
 
