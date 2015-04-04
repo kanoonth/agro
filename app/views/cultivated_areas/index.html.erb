@@ -1,36 +1,37 @@
 <p id="notice"><%= notice %></p>
+<div class="contents-container">
+  <h1>พื้นที่เพาะปลูกทั้งหมด</h1>
 
-<h1>พื้นที่เพาะปลูกทั้งหมด</h1>
-
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>ชื่อพื้นที่เพาะปลูก</th>
-      <th>ละติจูด</th>
-      <th>ลองติจูด</th>
-      <th>วิธีการเพาะปลูก</th>
-      <th>วันที่เริ่มเพาะปลูก</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cultivated_areas.each do |cultivated_area| %>
-      <tr data-link="<%= 'cultivated_areas/' + cultivated_area.id.to_s %>">
-        <td><%= cultivated_area.name %></td>
-        <td><%= cultivated_area.latitude %></td>
-        <td><%= cultivated_area.longitude %></td>
-        <td><%= cultivated_area.plantation.name %></td>
-        <td><%= cultivated_area.plantation_date %></td>
-        <td><%= link_to '', cultivated_area, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'ต้องการที่จะลบพื้นที่เพาะปลูกใช่หรือไม่?' } %></td>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>ชื่อพื้นที่เพาะปลูก</th>
+        <th>ละติจูด</th>
+        <th>ลองติจูด</th>
+        <th>วิธีการเพาะปลูก</th>
+        <th>วันที่เริ่มเพาะปลูก</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @cultivated_areas.each do |cultivated_area| %>
+        <tr data-link="<%= 'cultivated_areas/' + cultivated_area.id.to_s %>">
+          <td><%= cultivated_area.name %></td>
+          <td><%= cultivated_area.latitude %></td>
+          <td><%= cultivated_area.longitude %></td>
+          <td><%= cultivated_area.plantation.name %></td>
+          <td><%= cultivated_area.plantation_date %></td>
+          <td><%= link_to 'ลบพื้นที่เพาปลูก', cultivated_area, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'ต้องการที่จะลบพื้นที่เพาะปลูกใช่หรือไม่?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to ' เพิ่มพื้นที่เพาะปลูก', new_cultivated_area_path, class: "btn btn-primary btn-lg glyphicon glyphicon-pencil pull-right" %>
+  <br>
+
+  <%= link_to ' เพิ่มพื้นที่เพาะปลูก', new_cultivated_area_path, class: "btn btn-primary btn-lg glyphicon glyphicon-pencil pull-right" %>
+</div>
 
 <script type="text/javascript">
   $("tr[data-link]").click(function() {
