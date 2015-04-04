@@ -2,18 +2,18 @@ $bg-color: #27AE60;
 
 .contents-container {
    @extend %margin-auto;
-  margin-bottom: 50px;
-  max-width: 60%;
-  text-align: left;
-  @media screen and (max-width: 769px) {
-    max-width: 100%;
-  }
-  @media screen and (min-width: 769px) {
-    max-width: 80%;
-  }
-  @media screen and (min-width: 1300px) {
+    margin-bottom: 50px;
     max-width: 60%;
-  }
+    text-align: left;
+    @media screen and (max-width: 769px) {
+     max-width: 100%;
+    }
+    @media screen and (min-width: 769px) {
+      max-width: 80%;
+    }
+    @media screen and (min-width: 1300px) {
+      max-width: 60%;
+    }
 }  
 
 .content-container {

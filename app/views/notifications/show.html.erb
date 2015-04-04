@@ -1,14 +1,50 @@
 <p id="notice"><%= notice %></p>
+
 <div class="contents-container">
-	<h1>
-	 <!--  <strong>Disease:</strong> -->
-	  โรคที่เป็น
-	</h1>
-	<p>
-	  <strong>Cf:</strong>
-	  <%= @notification.cf %>
-	</p>
-	<p>
-		<%= @notification.disease.name %>
-	</p>
+	<div class="content-container">
+      <div class="content-header">
+        <h1>
+        	<%= "มีโอกาสในการเกิด" + @notification.disease.name + " " +  number_to_percentage(@notification.cf.to_f, precision: 0) %>
+        </h1>
+        <h4>
+			<%= @notification.created_at.strftime("%d/ %m/ %Y") %>
+        </h4>
+      </div>
+    <div class="content-body">
+        <p>
+          <%= @notification.body %>
+        </p>
+
+        <p>
+		  
+        </p>
+    </div>
+  </div>
+  <div class="content-container ">
+  	<div class="content-header noti-header">
+        <h6>
+        	ศึกษาข้อมูลเพิ่มเติม
+        </h6>
+    </div>
+    <table class=" more-table table table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="t-date" >วันที่</th>
+        <th class="t-title">ชื่อเรื่อง</th>
+        <th >เนื้อหา</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @contents.each do |content| %>
+        <tr data-link="<%= 'contents/' + content.id.to_s %>">
+          <td class="t-date"><%= content.created_at.strftime("%d/ %m/ %Y") %></td>
+          <td class="t-title"><%= content.title %></td>
+          <td ><%= content.body[0..40] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+
 </div>

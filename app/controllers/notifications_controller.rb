@@ -20,6 +20,7 @@ class NotificationsController < ApplicationController
   # GET /notifications/1
   # GET /notifications/1.json
   def show
+    @contents = Content.where(disease_id: @notification.disease.id)
   end
 
   # GET /notifications/new
