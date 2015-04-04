@@ -1,16 +1,27 @@
 <p id="notice"><%= notice %></p>
-
-	<div class="content-title">
-		<h1>
-	  	<%= @content.title %>
-		</h1>
+	<div class="contents-container">
+		<div class="content-container">
+	      <div class="content-header">
+	        <h4>
+	          <%= @content.title %>
+	        </h4>
+	      </div>
+	    <div class="content-body">
+	      <div class="content-img">      
+	          <%= image_tag "http://www.bloggang.com/data/p/pantheratigris/picture/1339949648.jpg" , width: "200px", height: "200px" %>
+	      </div>
+	        <p>
+	          <%= @content.body[0..40] + "... " %>
+	        </p>
+	        <% if @content.body.to_i > 40 %>
+	        <p>
+	          <%= @content.body[40..60] + "... " %>
+	        </p>
+	        <% end %>
+	    </div>
+	    <div class="content-footer">
+					
+	    </div>
+	  </div>
 	</div>
-
- 	<div class="content-img">
-      <%= image_tag "http://www.bloggang.com/data/p/pantheratigris/picture/1339949648.jpg" %>
-    </a>
-  </div>
-  <br>
-  <%= @content.body %>
-
 

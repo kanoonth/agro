@@ -2,28 +2,33 @@
 
 <h1>ข่าว</h1>
 
-<div class="contents-container col-md-8">
+<div class="contents-container">
 
   <% @contents.each do |content| %>
     <div class="content-container">
-      <h3>
-        <a href="<%= content_path(content) %>">
-          <%= content.title %>
-        </a>
-      </h3>
+      <div class="content-header">
+        <h4>
+          <a href="<%= content_path(content) %>">
+            <%= content.title %>
+          </a>
+        </h4>
+      </div>
+    <div class="content-body">
       <div class="content-img">
         <a href="<%= content_path(content) %>">
-          <%= image_tag "http://www.bloggang.com/data/p/pantheratigris/picture/1339949648.jpg" , width: "100%" %>
+          <%= image_tag "http://www.bloggang.com/data/p/pantheratigris/picture/1339949648.jpg" , width: "200px", height: "200px" %>
         </a>
       </div>
-      
-      <br>
-      <div class="content-body">
-        <h6>
+        <p>
           <%= content.body[0..40] + "... " %>
-        </h6>
-      </div>
-
+        </p>
+        <% if content.body.to_i > 40 %>
+        <p>
+          <%= content.body[40..60] + "... " %>
+        </p>
+        <% end %>
+    </div>
     </div>
   <% end %>
 </div>
+
