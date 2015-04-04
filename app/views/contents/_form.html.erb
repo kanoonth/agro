@@ -25,8 +25,13 @@
   </div>
   <div class="field">
     <%= f.label :content_type_id %><br>
-    <%= f.text_field :content_type_id %>
+    <%= collection_select :content, :content_type_id, @content_types, :id, :name %>
   </div>
+  <div class="field">
+    <%= f.label :disease_id %><br>
+    <%= collection_select :content, :disease_id, @diseases, :id, :name %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

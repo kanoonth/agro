@@ -15,6 +15,8 @@ class ContentsController < ApplicationController
   # GET /contents/new
   def new
     @content = Content.new
+    @content_types = ContentType.all
+    @diseases = [ Disease.new(name: 'None',id: nil) ] + Disease.all 
   end
 
   # GET /contents/1/edit
