@@ -15,6 +15,8 @@ class ContentsController < ApplicationController
   # GET /contents/new
   def new
     @content = Content.new
+    @content_types = ContentType.all
+    @diseases = [ Disease.new(name: 'None',id: nil) ] + Disease.all 
   end
 
   # GET /contents/1/edit
@@ -25,6 +27,14 @@ class ContentsController < ApplicationController
   # POST /contents.json
   def create
     @content = Content.new(content_params)
+
+    if params[:content][:content_image]
+      @content_image = ContentImage.new
+      @content_image.image = params[:content][:content_image]
+      @content_image.save!
+      @content_image.reload
+      @content.content_images << @content_image
+    end
 
     respond_to do |format|
       if @content.save
@@ -69,6 +79,6 @@ class ContentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def content_params
-      params.require(:content).permit(:title, :body, :content_images_id, :content_type_id)
+      params.require(:content).permit(:title, :body, :content_type_id, :disease_id)
     end
 end

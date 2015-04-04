@@ -185,7 +185,7 @@ class Notification < ActiveRecord::Base
       diseases.each do |disease|
         d = Disease.find_by_name(disease[0])
         cf = disease[1]
-        if cf > 0.95
+        if cf > 0.8
           Notification.create!(cultivated_area: cultivated_area,disease: d, cf: cf)
         end
       end

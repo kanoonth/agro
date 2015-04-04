@@ -20,13 +20,18 @@
     <%= f.text_field :body %>
   </div>
   <div class="field">
-    <%= f.label :content_images_id %><br>
-    <%= f.text_field :content_images_id %>
+    <%= f.label :content_image %><br>
+    <%= f.file_field :content_image %>
   </div>
   <div class="field">
     <%= f.label :content_type_id %><br>
-    <%= f.text_field :content_type_id %>
+    <%= collection_select :content, :content_type_id, @content_types, :id, :name %>
   </div>
+  <div class="field">
+    <%= f.label :disease_id %><br>
+    <%= collection_select :content, :disease_id, @diseases, :id, :name %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

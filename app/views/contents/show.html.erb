@@ -25,3 +25,9 @@
 	  </div>
 	</div>
 
+ 	<div class="content-img">
+      <%= image_tag @content.content_images.first.image.url(:thumb) unless @content.content_images.empty? %>
+    </a>
+  </div>
+  <br>
+  <%= @content.body %>
