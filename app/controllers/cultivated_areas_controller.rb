@@ -83,6 +83,6 @@ class CultivatedAreasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cultivated_area_params
-      params.require(:cultivated_area).permit(:name, :latitude, :longitude, :plantation_id, :plantation_date)
+      params.require(:cultivated_area).permit(:name, :latitude, :longitude, :plantation_id, :plantation_date, :auth_token)
     end
 end
