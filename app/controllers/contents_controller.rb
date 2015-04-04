@@ -34,15 +34,15 @@ class ContentsController < ApplicationController
       @content.content_images << @content_image
     end
 
-    # respond_to do |format|
-    #   if @content.save
-    #     format.html { redirect_to @content, notice: 'Content was successfully created.' }
-    #     format.json { render :show, status: :created, location: @content }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @content.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @content.save
+        format.html { redirect_to @content, notice: 'Content was successfully created.' }
+        format.json { render :show, status: :created, location: @content }
+      else
+        format.html { render :new }
+        format.json { render json: @content.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /contents/1
@@ -77,6 +77,6 @@ class ContentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def content_params
-      params.require(:content).permit(:title, :body, :content_type_id)
+      params.require(:content).permit(:title, :body, :content_type_id, :disease_id)
     end
 end
