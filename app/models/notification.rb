@@ -191,4 +191,8 @@ class Notification < ActiveRecord::Base
       end
     end
   end
+
+  def percent_cf
+    (cf * 100).round.to_s + "%"
+  end
 end

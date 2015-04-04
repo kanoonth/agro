@@ -16,7 +16,7 @@
       <% @notifications.each do |notification| %>
         <tr data-link="<%= 'notifications/' + notification.id.to_s %>">
           <td ><%= notification.created_at.strftime("%d/ %m/ %Y") %></td>
-          <td ><%= number_to_percentage(notification.cf.to_f, precision: 0) %></td>
+          <td ><%= notification.percent_cf %></td>
           <td ><%= notification.disease.name %></td>
           <td><%= link_to 'ลบการแจ้งเตือน', notification,class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'ต้องการที่จะลบการแจ้งเตือนนี้ใช่หรือไม่?' } %></td>
         </tr>

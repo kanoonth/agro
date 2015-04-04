@@ -4,7 +4,7 @@
 	<div class="content-container">
       <div class="content-header">
         <h1>
-        	<%= "มีโอกาสในการเกิด" + @notification.disease.name + " " +  number_to_percentage(@notification.cf.to_f, precision: 0) %>
+        	<%= "มีโอกาสในการเกิด" + @notification.disease.name + " " +  @notification.percent_cf %>
         </h1>
         <h4>
 			<%= @notification.created_at.strftime("%d/ %m/ %Y") %>
