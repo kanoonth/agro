@@ -1,4 +1,5 @@
 <%= form_for @cultivated_area, class: "form-horizontal" do |f| %>
+<div class="contents-container">
   <% if @cultivated_area.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@cultivated_area.errors.count, "error") %> prohibited this cultivated_area from being saved:</h2>
@@ -10,44 +11,66 @@
       </ul>
     </div>
   <% end %>
-<div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">ชื่อพื้นที่เพาะปลูก</label>
-    <div class="col-sm-10 cultivated-field">
-      <%= f.text_field :name, class: "form-control" %>
+  <div>
+    <div class="form-group  col-sm-12">
+      <label class="col-sm-2 control-label">ชื่อพื้นที่เพาะปลูก</label>
+      <div class="col-sm-10 cultivated-field">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group  col-sm-12">
+      <label class="col-sm-2 control-label">ละติจูด</label>
+      <div class="col-sm-10 cultivated-field">
+        <%= f.text_field :latitude, class: "form-control", id: "lat" %>
+      </div>
+    </div>
+
+    <div class="form-group  col-sm-12">
+      <label class="col-sm-2 control-label">ลองติจูด</label>
+      <div class="col-sm-10 cultivated-field">
+        <%= f.text_field :longitude, class: "form-control" , id: "lng" %>
+      </div>
+    </div>
+
+    <div class="form-group  col-sm-12">
+      <div class="col-sm-12 cultivated-field">
+        <button type="button" class="auto-l btn btn-block btn-lg btn-info">ใช้พิกัดที่อยู่ปัจจุบัน</button>
+      </div>
+    </div>
+    
+      <div class="form-group  col-sm-12">
+      <label class="col-sm-2 control-label">วิธีการเพาะปลูก</label>
+      <div class="col-sm-10 cultivated-field">
+        <%= collection_select :cultivated_area, :plantation_id, @plantations, :id, :name, {} , {class: "form-control"} %>
+      </div>
+    </div>
+
+      <div class="form-group  col-sm-12">
+      <label class="col-sm-2 control-label">วันที่เริ่มเพาะปลูก</label>
+      <div class="col-sm-10 cultivated-field">
+        <%= f.date_select :plantation_date %>
+      </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">ละติจูด</label>
-    <div class="col-sm-10 cultivated-field">
-      <%= f.text_field :latitude, class: "form-control" %>
-    </div>
+  <div class="actions">
+      <%= f.submit 'เสร็จสิ้น', class: "btn btn-primary btn-lg pull-right" %>
   </div>
-
-  <div class="form-group">
-    <label class="col-sm-2 control-label">ลองติจูด</label>
-    <div class="col-sm-10 cultivated-field">
-      <%= f.text_field :longitude, class: "form-control" %>
-    </div>
-  </div>
-
-    <div class="form-group">
-    <label class="col-sm-2 control-label">วิธีการเพาะปลูก</label>
-    <div class="col-sm-10 cultivated-field">
-      <%= collection_select :cultivated_area, :plantation_id, @plantations, :id, :name, {} , {class: "form-control"} %>
-    </div>
-  </div>
-
-    <div class="form-group">
-    <label class="col-sm-2 control-label">วันที่เริ่มเพาะปลูก</label>
-    <div class="col-sm-10 cultivated-field">
-      <%= f.date_select :plantation_date %>
-    </div>
-  </div>
-</div>
-
-<div class="actions">
-    <%= f.submit 'เสร็จสิ้น', class: "btn btn-primary btn-lg pull-right" %>
 </div>
 <% end %>
+
+<script type="text/javascript">
+  $(".auto-l").click(function(){ 
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+       
+    }
+  });
+
+function showPosition(position) {
+  $("#lat").val( position.coords.latitude );
+  $("#lng").val( position.coords.longitude ); 
+}
+</script>

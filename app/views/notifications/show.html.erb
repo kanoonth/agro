@@ -2,8 +2,8 @@
 
 <div class="contents-container">
 	<div class="content-container">
-      <div class="content-header">
-        <h1>
+      <div class="noti-header">
+        <h1 class="glyphicon glyphicon-warning-sign">
         	<%= "มีโอกาสในการเกิด" + @notification.disease.name + " " +  @notification.percent_cf %>
         </h1>
         <h4>
@@ -48,3 +48,9 @@
   </div>
 
 </div>
+
+<script type="text/javascript">
+  $("tr[data-link]").click(function() {
+    window.location = this.dataset.link
+  });
+</script>

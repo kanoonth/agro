@@ -21,3 +21,10 @@
 //= require respond.min
 //= require video
 //= require_tree .
+//= require skrollr
+//= require skrollr
+//= require skrollr.ie
+//= require skrollr
+//= require skrollr.menu
+//= require skrollr
+//= require skrollr.stylesheets
