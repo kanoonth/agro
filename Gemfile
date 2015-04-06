@@ -13,6 +13,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem "paperclip"
 
+gem 'skrollr-rails'
+
 gem 'devise'
 
 gem 'wunderground'
