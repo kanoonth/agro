@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  temperature: 9.99
+  rain: 9.99
+  wind: 9.99
+  air_moisture: 9.99
+  province_id: 
+
+two:
+  temperature: 9.99
+  rain: 9.99
+  wind: 9.99
+  air_moisture: 9.99
+  province_id: 

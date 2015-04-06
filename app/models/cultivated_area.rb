@@ -7,6 +7,7 @@ class CultivatedArea < ActiveRecord::Base
   belongs_to :area_type
   belongs_to :province
   belongs_to :user
+  has_many :dashboard
 
   has_many :notifications
 
@@ -29,4 +30,3 @@ class CultivatedArea < ActiveRecord::Base
 
 
 end
-

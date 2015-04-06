@@ -17,6 +17,8 @@ gem 'devise'
 
 gem 'wunderground'
 
+gem 'spreadsheet'
+
 gem 'geocoder'
 
 gem 'sprockets-rails'

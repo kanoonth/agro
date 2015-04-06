@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404080326) do
+ActiveRecord::Schema.define(version: 20150406112519) do
 
   create_table "air_moistures", force: :cascade do |t|
     t.decimal  "min"
@@ -89,13 +89,29 @@ ActiveRecord::Schema.define(version: 20150404080326) do
     t.decimal  "longitude"
     t.integer  "plantation_id"
     t.integer  "user_id"
+    t.integer  "area_type_id"
+    t.integer  "soil_type_id"
+    t.integer  "province_id"
     t.date     "plantation_date"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
+  add_index "cultivated_areas", ["area_type_id"], name: "index_cultivated_areas_on_area_type_id"
   add_index "cultivated_areas", ["plantation_id"], name: "index_cultivated_areas_on_plantation_id"
+  add_index "cultivated_areas", ["province_id"], name: "index_cultivated_areas_on_province_id"
+  add_index "cultivated_areas", ["soil_type_id"], name: "index_cultivated_areas_on_soil_type_id"
   add_index "cultivated_areas", ["user_id"], name: "index_cultivated_areas_on_user_id"
+
+  create_table "dashboards", force: :cascade do |t|
+    t.decimal  "temperature"
+    t.decimal  "rain"
+    t.decimal  "wind"
+    t.decimal  "air_moisture"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "cultivated_area_id"
+  end
 
   create_table "disease_names", force: :cascade do |t|
     t.string   "name"

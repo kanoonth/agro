@@ -109,6 +109,9 @@ class Notification < ActiveRecord::Base
 
     factor = Hash.new
     w_api = Wunderground.new("d326db8a4068ab73")
+
+
+
     wun = w_api.forecast_and_conditions_for(cultivated_area.latitude.to_s + "," + cultivated_area.longitude.to_s)['current_observation']
     factor['temperature'] = wun['temp_c']
     factor['rain'] = wun['precip_today_metric'].to_f
@@ -116,9 +119,19 @@ class Notification < ActiveRecord::Base
     am = wun['relative_humidity']
     am["%"] = ""
     factor['air_moisture'] = am.to_f
+
     factor['region'] = cultivated_area.province.region.name
     factor['plantation'] = cultivated_area.plantation.name
     factor['age'] = (Date.current - cultivated_area.plantation_date).to_i
+
+    d = Dashboard.new
+    d.temperature = factor['temperature']
+    d.rain = factor['rain']
+    d.wind = factor['wind']
+    d.air_moisture = factor['air_moisture']
+    d.cultivated_area = cultivated_area
+    d.save
+
     # factor['area_type'] = cultivated_area.area_type.name
     # factor['soil_type'] = cultivated_area.soil_type.name
 
