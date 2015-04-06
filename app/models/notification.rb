@@ -4,7 +4,11 @@ class Notification < ActiveRecord::Base
 
   def self.get_stage_cf(disease, age)
   	stage = disease.stages.where("min_day <= ? AND max_day >= ?", age, age).first
- 	  StageCertaintyFactor.where(disease_id: disease.id, stage_id: stage.id).first.factor
+    unless stage.nil?
+ 	    StageCertaintyFactor.where(disease_id: disease.id, stage_id: stage.id).first.factor
+    else
+      0
+    end
   end
 
   def self.get_region_cf(disease, region_name)
