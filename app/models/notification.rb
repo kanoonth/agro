@@ -124,7 +124,7 @@ class Notification < ActiveRecord::Base
     am["%"] = ""
     factor['air_moisture'] = am.to_f
 
-    factor['region'] = cultivated_area.province.region.name
+    factor['region'] = cultivated_area.province.region.name unless cultivated_area.province.nil?
     factor['plantation'] = cultivated_area.plantation.name
     factor['age'] = (Date.current - cultivated_area.plantation_date).to_i
 
