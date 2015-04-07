@@ -21,7 +21,7 @@
         </div>
         <% end -%>
         <div class="actions top10">
-          <%= f.submit "Log in"%>
+          <%= f.submit "Log in" , class: "btn btn-primary btn-lg pull-right"%>
           <%= render "devise/shared/links" %>
           <br>
         </div>
@@ -69,7 +69,8 @@
           <%= f.text_field :identification_number, class: "form-control signup-field" %>
         </div>
         <div class="actions top10">
-          <%= f.submit "Sign up" %>
+          <%= f.submit "Sign up" , class: "btn btn-primary btn-lg pull-right" %>
+          <br>
         </div>
         <% end %>
       </div>
@@ -81,14 +82,12 @@
 
 <style type="text/css">
   .box-login {
-    background-color: white;
     float: left;
     width: 40%;
     margin: 10px;
   }
 
   .box-sign-up {
-    background-color: white;
     float: left;
     width: 50%;
     margin: 10px;
