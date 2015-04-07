@@ -4,6 +4,7 @@
 <h1>
     สถานะ <%= @cultivated_area.name %> 
   </h1>
+  <% if  @cultivated_area.dashboards.last %>
   <h4><%= @cultivated_area.dashboards.last.created_at.strftime("ณ วันที่ %d/ %m/ %Y เวลา %R") %></h4>
   <table class="table">
     <tbody>
@@ -42,6 +43,11 @@
 
     </tbody>
   </table>
+  <% else %>
+    <h4>
+      กรุณารอสักครู่ ระบบกำลังรวบรวมข้อมูลเพื่อแสดงผล
+    </h4>
+  <% end %>
   <h1>
     พื้นที่ <%= @cultivated_area.name %>
   </h1>
