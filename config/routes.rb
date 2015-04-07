@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   post 'notifications/predict' => 'notifications#get_predicted_diseases'
 
-  get 'profile' => 'users#profile'
+  get 'profile' => 'profiles#profile'
 
 end
