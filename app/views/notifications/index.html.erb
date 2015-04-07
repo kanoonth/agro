@@ -14,7 +14,7 @@
 
     <tbody>
       <% @notifications.each do |notification| %>
-        <tr data-link="<%= 'notifications/' + notification.id.to_s %>">
+        <tr data-link="<%= 'notifications/' + notification.id.to_s %>" style="cursor: pointer">
           <td ><%= notification.created_at.strftime("%d/ %m/ %Y") %></td>
           <td ><%= notification.percent_cf %></td>
           <td ><%= notification.disease.name %></td>

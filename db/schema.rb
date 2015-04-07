@@ -72,14 +72,12 @@ ActiveRecord::Schema.define(version: 20150406112519) do
   create_table "contents", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
-    t.integer  "content_images_id"
     t.integer  "content_type_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "disease_id"
   end
 
-  add_index "contents", ["content_images_id"], name: "index_contents_on_content_images_id"
   add_index "contents", ["content_type_id"], name: "index_contents_on_content_type_id"
 
   create_table "cultivated_areas", force: :cascade do |t|

@@ -1,13 +1,12 @@
-
-<div class="user-wrapper">
+<div class="contents-container">
   <div class="user-container">
-    <h2  class="user-component">Edit <%= resource_name.to_s.humanize %></h2>
+    <h2  class="user-component"> แก้ไขข้อมูลส่วนตัว</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
 
       <div class="field user-component">
-        <%= f.label :username ,class: "" %><br />
+        <%= f.label "ชื่อผู้ใช้",class: "" %><br />
         <%= f.text_field :username, autofocus: true ,class: " user-field form-control" %>
       </div>
 
@@ -16,17 +15,17 @@
       <% end %>
 
       <div class="field  user-component">
-        <%= f.label :password ,class: "" %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.label "รหัสผ่าน" ,class: "" %> <i>(เว้นว่างไว้ถ้าไม่ต้องการเปลี่ยนรหัสผ่าน)</i><br />
         <%= f.password_field :password, autocomplete: "off" ,class: " user-field form-control" %>
       </div>
 
       <div class="field  user-component">
-        <%= f.label :password_confirmation ,class: "" %><br />
+        <%= f.label "ยืนยันรหัสผ่าน" ,class: "" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" ,class: " user-field form-control" %>
       </div>
 
       <div class="field  user-component">
-        <%= f.label :current_password ,class: "" %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.label "รหัสผ่าน ปัจจุบัน" ,class: "" %> <i>(ใส่รหัสผ่านปัจจุบันเพื่อยืนยันการเปลี่ยนแปลง)</i><br />
         <%= f.password_field :current_password, autocomplete: "off" ,class: " user-field form-control" %>
       </div>
 
@@ -51,20 +50,9 @@
       </div>
 
       <div class="actions user-component">
-        <%= f.submit "Update" ,class: " user-field" %>
+        <%= f.submit "ยืนยันการแก้ไข" ,class: " user-field" %>
       </div>
     <% end %>
+</div>
 
-    <h3 class=" user-component">Cancel my account</h3>
-
-    <p class=" user-component">Unhappy? 
-    <div class="user-component">
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,class: "user-component" %>
-    </div>
-    </p>
-
-    <div class=" user-component">
-      <%= link_to "Back", :back ,class: "user-component" %>
-    </div>
-  </div>
 </div>

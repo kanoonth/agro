@@ -16,10 +16,10 @@
 
     <tbody>
       <% @cultivated_areas.each do |cultivated_area| %>
-        <tr data-link="<%= 'cultivated_areas/' + cultivated_area.id.to_s %>">
+        <tr data-link="<%= 'cultivated_areas/' + cultivated_area.id.to_s %>" style="cursor: pointer;">
           <td><%= cultivated_area.name %></td>
-          <td><%= cultivated_area.latitude %></td>
-          <td><%= cultivated_area.longitude %></td>
+          <td><%= number_with_precision( cultivated_area.latitude, precision: 4) %></td>
+          <td><%= number_with_precision( cultivated_area.longitude, precision: 4) %></td>
           <td><%= cultivated_area.plantation.name %></td>
           <td><%= cultivated_area.plantation_date %></td>
           <td><%= link_to 'ลบพื้นที่เพาปลูก', cultivated_area, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'ต้องการที่จะลบพื้นที่เพาะปลูกใช่หรือไม่?' } %></td>

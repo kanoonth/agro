@@ -7,8 +7,7 @@ class CultivatedArea < ActiveRecord::Base
   belongs_to :area_type
   belongs_to :province
   belongs_to :user
-  has_many :dashboard
-
+  has_many :dashboards
   has_many :notifications
 
   validates :name, presence: true
