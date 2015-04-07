@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :notifications, except: [:edit, :update]
 
-  root 'notifications#predict'
+  root 'profiles#home'
 
   post 'notifications/predict' => 'notifications#get_predicted_diseases'
 

@@ -22,7 +22,7 @@
           <td><%= number_with_precision( cultivated_area.longitude, precision: 4) %></td>
           <td><%= cultivated_area.plantation.name %></td>
           <td><%= cultivated_area.plantation_date %></td>
-          <td><%= link_to 'ลบพื้นที่เพาปลูก', cultivated_area, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'ต้องการที่จะลบพื้นที่เพาะปลูกใช่หรือไม่?' } %></td>
+          <td><%= link_to 'ลบพื้นที่เพาะปลูก', cultivated_area, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'ต้องการที่จะลบพื้นที่เพาะปลูกใช่หรือไม่?' } %></td>
         </tr>
       <% end %>
     </tbody>

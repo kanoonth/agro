@@ -37,7 +37,7 @@
 
     <tbody>
       <% @contents.each do |content| %>
-        <tr data-link="<%= '../contents/' + content.id.to_s %>">
+        <tr data-link="<%= '../contents/' + content.id.to_s %>" style="cursor: pointer">
           <td class="t-date"><%= content.created_at.strftime("%d/ %m/ %Y") %></td>
           <td class="t-title"><%= content.title %></td>
           <td ><%= content.body[0..40] %></td>
