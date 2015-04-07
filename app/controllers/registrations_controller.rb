@@ -19,7 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
 
         respond_to do |format|
           format.html { respond_with resource, location: after_inactive_sign_up_path_for(resource) }
-          format.json { render :json => resource.inactive_message }
+          format.json { render :json => resource.inactive_message, :status => :unauthorized }
         end
       end
     else
