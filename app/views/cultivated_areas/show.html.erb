@@ -1,48 +1,91 @@
 <p id="notice"><%= notice %></p>
 
 <div class="contents-container">
+<h1>
+    สถานะ <%= @cultivated_area.name %> 
+  </h1>
+  <h4><%= @cultivated_area.dashboards.last.created_at.strftime("ณ วันที่ %d/ %m/ %Y เวลา %R") %></h4>
+  <table class="table">
+    <tbody>
+      <tr>
+      <td class="col-sm-6">
+        <strong>อุณหภูมิ (ํc)</strong>
+      </td>
+      <td class="col-sm-6">
+        <%= @cultivated_area.dashboards.last.temperature %>
+      </td>
+      </tr>
+      <tr>
+      <td class="col-sm-6">
+        <strong>ปริมาณฝน (mm)</strong>
+      </td>
+      <td class="col-sm-6">
+        <%= @cultivated_area.dashboards.last.rain %>
+      </td>
+      </tr>
+      <tr>
+      <td class="col-sm-6">
+        <strong>ความเร็วลม (km/hr)</strong>
+      </td>
+      <td class="col-sm-6">
+        <%= @cultivated_area.dashboards.last.wind %>
+      </td>
+      </tr>
+      <tr>
+      <td class="col-sm-6">
+        <strong>ความชื้นสัมพัทธ์ในอากาศ (%)</strong>
+      </td>
+      <td class="col-sm-6">
+        <%= @cultivated_area.dashboards.last.air_moisture %>
+      </td>
+      </tr>
+
+    </tbody>
+  </table>
   <h1>
     พื้นที่ <%= @cultivated_area.name %>
   </h1>
   <table class="table">
     <tbody>
       <tr>
-        <td>
+        <td class="col-sm-6">
           <strong>ละติจูด</strong>
         </td>
-        <td>
-          <%= @cultivated_area.latitude %>
+        <td class="col-sm-6">
+          <%= number_with_precision( @cultivated_area.latitude, precision: 4) %>
         </td>
       </tr>
 
       <tr>
-        <td>
+        <td class="col-sm-6">
           <strong>ลองติจูด</strong>
         </td>
-        <td>
-          <%= @cultivated_area.longitude %>
+        <td class="col-sm-6">
+          <%= number_with_precision( @cultivated_area.longitude, precision: 4) %>
         </td>
       </tr>
 
       <tr>
-        <td>
+        <td class="col-sm-6">
           <strong>วิธีการเพาะปลูก</strong>
         </td>
-        <td>
+        <td class="col-sm-6">
           <%= @cultivated_area.plantation.name %>
         </td>
       </tr>
 
       <tr>
-        <td>
+        <td class="col-sm-6">
           <strong>วันที่เริ่มเพาะปลูก</strong>
         </td>
-        <td>
+        <td class="col-sm-6">
           <%= @cultivated_area.plantation_date %>
         </td>
       </tr>
 
     </tbody>
   </table>
+
+
   <%= link_to 'แก้ไข', edit_cultivated_area_path(@cultivated_area), class: "btn btn-primary btn-lg glyphicon glyphicon-pencil pull-right" %>
 </div>

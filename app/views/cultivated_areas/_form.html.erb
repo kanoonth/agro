@@ -70,7 +70,11 @@
   });
 
 function showPosition(position) {
-  $("#lat").val( position.coords.latitude );
-  $("#lng").val( position.coords.longitude ); 
+
+  var lat = position.coords.latitude.toFixed(4);
+  var lng = position.coords.latitude.toFixed(4);
+  $("#lat").val( lat );
+
+  $("#lng").val( lng ); 
 }
 </script>
