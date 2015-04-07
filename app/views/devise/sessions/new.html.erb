@@ -1,89 +1,111 @@
-<div class="col-md-4">
+<div class="contents-container">
+
+<div class="box-login">
   <div class="login-wrapper">
     <div class="login-container circle">
-      <h2 class="login-component"><span class="fui-lock"></span>เข้าสู่ระบบ</h2>
-        <div class="login-component">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
+      <h3 class="login-component"><span class="fui-lock"></span>เข้าสู่ระบบ</h3>
+      <div class="login-component">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field top10">
           <%= f.label :username%><br />
           <%= f.text_field :username, autofocus: true, class: "form-control login-field" %>
         </div>
-     
-        <div class="field">
+        <div class="field top10">
           <%= f.label :password %><br />
           <%= f.password_field :password, autocomplete: "off", class: "form-control login-field" %>
         </div>
-
         <% if devise_mapping.rememberable? -%>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
+        <div class="field top10">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
         <% end -%>
-
-        <div class="actions">
+        <div class="actions top10">
           <%= f.submit "Log in"%>
           <%= render "devise/shared/links" %>
           <br>
         </div>
-      <% end %>
-
-     </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-<div class="col-md-8">
+<div class="box-sign-up">
   <div class="signup-wrapper">
     <div class="signup-container circle">
-      <h2 class="signup-component"><span class="fui-user"></span>สมัครสมาชิก</h2>
+      <h3 class="signup-component"><span class="fui-user"></span>สมัครสมาชิก</h3>
       <div class="signup-component">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, class: "form-control signup-field" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", class: "form-control signup-field" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control signup-field" %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'ชื่อ' %><br />
-    <%= f.text_field :first_name, class: "form-control signup-field" %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'นามสกุล' %><br />
-    <%= f.text_field :last_name, class: "form-control signup-field" %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'เบอร์โทรศัพท์' %><br />
-    <%= f.text_field :phone_number, class: "form-control signup-field" %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'รหัสประจำตัวประชาชน' %><br />
-    <%= f.text_field :identification_number, class: "form-control signup-field" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-</div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="field top10">
+          <%= f.label :username %><br />
+          <%= f.text_field :username, autofocus: true, class: "form-control signup-field" %>
+        </div>
+        <div class="field top10">
+          <%= f.label :password %>
+          <% if @validatable %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control signup-field" %>
+        </div>
+        <div class="field top10">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control signup-field" %>
+        </div>
+        <div class="field top10">
+          <%= f.label 'ชื่อ' %><br />
+          <%= f.text_field :first_name, class: "form-control signup-field" %>
+        </div>
+        <div class="field top10">
+          <%= f.label 'นามสกุล' %><br />
+          <%= f.text_field :last_name, class: "form-control signup-field" %>
+        </div>
+        <div class="field top10">
+          <%= f.label 'เบอร์โทรศัพท์' %><br />
+          <%= f.text_field :phone_number, class: "form-control signup-field" %>
+        </div>
+        <div class="field top10">
+          <%= f.label 'รหัสประจำตัวประชาชน' %><br />
+          <%= f.text_field :identification_number, class: "form-control signup-field" %>
+        </div>
+        <div class="actions top10">
+          <%= f.submit "Sign up" %>
+        </div>
+        <% end %>
+      </div>
     </div>
-  </div>
 </div>
 </div>
+</div>
+
+
+<style type="text/css">
+  .box-login {
+    background-color: white;
+    float: left;
+    width: 40%;
+    margin: 10px;
+  }
+
+  .box-sign-up {
+    background-color: white;
+    float: left;
+    width: 50%;
+    margin: 10px;
+  }  
+
+  .top10 { 
+    margin-top:10px; 
+  }
+
+  .top10 > label {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+  .box-login , .box-sign-up {
+     width: 100%;
+     margin: 0px;
+  }
+}
+</style>
