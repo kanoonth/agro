@@ -28,19 +28,20 @@ class Content < ActiveRecord::Base
   ###
 
   def self.add_disease_content( content, image )
-  	if (! (disease = Disease.find_by_name(content[1])) )
+    disease = Disease.find_by_name(content[1])
+  	if disease.nil?
   	  return
     end
 
     for j in 0..5
       unless content[j + 2].nil?
-        c = Content.new(title: disease.name, body: content[j + 2], content_type: ContentType.find($array[j]))
+        c = Content.new(title: disease.name, body: content[j + 2], content_type: ContentType.find($array[j]), disease_id: disease.id)
         if image[j + 2]
           temp = open(image[j + 2])
-          content_image = ContentImage.create(image: temp)
+          content_image = ContentImage.create!(image: temp)
           c.content_images << content_image
         end
-        c.save
+        c.save!
       end
     end
 

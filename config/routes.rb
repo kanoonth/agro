@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations" }
 
   resources :cultivated_areas
@@ -16,5 +15,7 @@ Rails.application.routes.draw do
   root 'notifications#predict'
 
   post 'notifications/predict' => 'notifications#get_predicted_diseases'
+
+  get 'profile' => 'users#profile'
 
 end
