@@ -21,6 +21,8 @@ gem 'wunderground'
 
 gem 'spreadsheet'
 
+gem 'simple-spreadsheet'
+
 gem 'geocoder'
 
 gem 'sprockets-rails'

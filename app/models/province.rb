@@ -4,5 +4,4 @@ class Province < ActiveRecord::Base
   has_many :cultivated_areas
 
   validates :name, presence: true
-  validates :province_id, presence:true
 end

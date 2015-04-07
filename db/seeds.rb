@@ -29,6 +29,12 @@ Plantation.create( name: "หยอด" )
 SoilType.create( name: "ดินเหนียว" )
 SoilType.create( name: "ดินร่วน" )
 SoilType.create( name: "ดินทราย" )
+ContentType.create( name: 'ระยะกล้า' )
+ContentType.create( name: "ระยะแตกกอ" )
+ContentType.create( name: "ระยะออกรวง" )
+ContentType.create( name: "ระยะตั้งท้อง" )
+ContentType.create( name: "การรักษา" )
+ContentType.create( name: "การป้องกัน" )
 
 
 ### Dump Content for testing.
@@ -52,7 +58,7 @@ comment.save
 #################################################################################
 
 ##### Disease
-a = Disease.new(name: "โรคไหม้")
+a = Disease.new(name: "โรคใบไหม้")
 
 ##### DiseaseName
 # a.disease_names << DiseaseName.new(name: "Left Blight_B")
@@ -298,7 +304,7 @@ dd.save
 #################################################################################
 
 ##### Disease
-a = Disease.new(name: "โรคขอบใบ้แห้ง")
+a = Disease.new(name: "โรคขอบใบแห้ง")
 
 ##### DiseaseName
 # a.disease_names << DiseaseName.new(name: "Bacterial Leaf Blight_B")
@@ -1246,3 +1252,5 @@ prov.save
 # b = CultivatedArea.new( longitude: 5, latitude:12, plantation: Plantation.find(3), user: a, plantation_date: Date.current )
 # c = CultivatedArea.new( longitude: 4, latitude:9, plantation: Plantation.first, user: a, plantation_date: Date.current )
 # a.save
+
+Content.read_content_to_record

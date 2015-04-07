@@ -1,4 +1,4 @@
 class ContentType < ActiveRecord::Base
-	belongs_to :content
+	has_many :contents
 	validates :name, presence: true
 end
