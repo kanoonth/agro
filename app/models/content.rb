@@ -9,20 +9,20 @@ class Content < ActiveRecord::Base
 
     ### Global var
 
-    content_type_stage1 = ContentType.find_by_name("ระยะกล้า")
-    content_type_stage2 = ContentType.find_by_name("ระยะแตกกอ")
-    content_type_stage3 = ContentType.find_by_name("ระยะออกรวง")
-    content_type_stage4 = ContentType.find_by_name("ระยะตั้งท้อง")
-    content_type_cure = ContentType.find_by_name("การรักษา")
-    content_type_protect = ContentType.find_by_name("การป้องกัน")
-    
-    $array = Array.new
-    $array[0] = content_type_stage1
-    $array[1] = content_type_stage2
-    $array[2] = content_type_stage3
-    $array[3] = content_type_stage4
-    $array[4] = content_type_cure
-    $array[5] = content_type_protect
+  content_type_stage1 = ContentType.find_by_name("ระยะกล้า")
+  content_type_stage2 = ContentType.find_by_name("ระยะแตกกอ")
+  content_type_stage3 = ContentType.find_by_name("ระยะออกรวง")
+  content_type_stage4 = ContentType.find_by_name("ระยะตั้งท้อง")
+  content_type_cure = ContentType.find_by_name("การรักษา")
+  content_type_protect = ContentType.find_by_name("การป้องกัน")
+  
+  $array = Array.new
+  $array[0] = content_type_stage1
+  $array[1] = content_type_stage2
+  $array[2] = content_type_stage3
+  $array[3] = content_type_stage4
+  $array[4] = content_type_cure
+  $array[5] = content_type_protect
 
     ###
 
@@ -30,8 +30,6 @@ class Content < ActiveRecord::Base
   	if(! (disease = Disease.find_by_name(row[1])) )
   	  return
     end
-
-
 
     for i in 0..5
       unless row[i+2].nil?
@@ -50,7 +48,5 @@ class Content < ActiveRecord::Base
     	add_disease_content(row)
     end
   end
-
-
 
 end
