@@ -114,8 +114,6 @@ class Notification < ActiveRecord::Base
     factor = Hash.new
     w_api = Wunderground.new("d326db8a4068ab73")
 
-
-
     wun = w_api.forecast_and_conditions_for(cultivated_area.latitude.to_s + "," + cultivated_area.longitude.to_s)['current_observation']
     factor['temperature'] = wun['temp_c']
     factor['rain'] = wun['precip_today_metric'].to_f

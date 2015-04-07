@@ -131,33 +131,33 @@ html,body{
 	/*background-color: lighten($maincolor,50%);*/
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 15px;
+	padding-top: 10px;
 	text-align: left;
 	/*min-height: 300px;*/
-	min-width: 400px;
-	width: 30%;
+	/*min-width: 40%;*/
+	width: 100%;
 }
 
 .login-component{
-	min-width: 300px;
-	margin: 50px !important;
+	/*min-width: 300px;*/
+	margin: 30px !important;
 }
 
 .login-field{
-	min-width: 200px;
+	/*min-width: 200px;*/
 }
 
-@media screen and (min-width: 1000px) {
+
 
 	/*SIGNUP*/
 
 	.signup-component{
-		max-width: 600px;
-		margin: 50px !important;
+		/*max-width: 600px;*/
+		margin: 30px !important;
 	}
 
 	.signup-field{
-		min-width: 400px;
+		/*min-width: 400px;*/
 	}
 
 	.signup-container{
@@ -165,13 +165,13 @@ html,body{
 		/*background-color: lighten($maincolor,50%);*/
 		margin-left: auto;
 		margin-right: auto;
-		padding-top: 15px;
+		padding-top: 10px;
 		text-align: left;
 		/*min-height: 300px;*/
-		min-width: 700px;
-		width: 50%;
+		/*min-width: 700px;*/
+		width: 100%;
 	}
-}
+
 @media screen and (max-device-width: 991px) {
 	.footer {
 	   position:static;

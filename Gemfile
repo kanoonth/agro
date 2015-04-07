@@ -34,6 +34,7 @@ gem 'whenever', :require => false
 gem 'pry-rails', :group => :development
 
 gem 'bootstrap-glyphicons'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
