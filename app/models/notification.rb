@@ -4,7 +4,11 @@ class Notification < ActiveRecord::Base
 
   def self.get_stage_cf(disease, age)
   	stage = disease.stages.where("min_day <= ? AND max_day >= ?", age, age).first
- 	  StageCertaintyFactor.where(disease_id: disease.id, stage_id: stage.id).first.factor
+    unless stage.nil?
+ 	    StageCertaintyFactor.where(disease_id: disease.id, stage_id: stage.id).first.factor
+    else
+      0
+    end
   end
 
   def self.get_region_cf(disease, region_name)
@@ -120,7 +124,7 @@ class Notification < ActiveRecord::Base
     am["%"] = ""
     factor['air_moisture'] = am.to_f
 
-    factor['region'] = cultivated_area.province.region.name
+    factor['region'] = cultivated_area.province.region.name unless cultivated_area.province.nil?
     factor['plantation'] = cultivated_area.plantation.name
     factor['age'] = (Date.current - cultivated_area.plantation_date).to_i
 
