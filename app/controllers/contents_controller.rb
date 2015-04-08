@@ -4,7 +4,7 @@ class ContentsController < ApplicationController
   # GET /contents
   # GET /contents.json
   def index
-    @contents = Content.all
+    @contents = Content.where(content_type: ContentType.find_by_name('ข่าว'))
   end
 
   # GET /contents/1
