@@ -37,8 +37,12 @@ class Content < ActiveRecord::Base
       unless content[j + 2].nil?
         c = Content.new(title: disease.name, body: content[j + 2], content_type: ContentType.find($array[j]), disease_id: disease.id)
         if image[j + 2]
-          temp = open(image[j + 2])
-          content_image = ContentImage.create!(image: temp)
+          begin
+	          temp = open(image[j + 2])
+          rescue
+            # What to do now?
+	        end
+	        content_image = ContentImage.create!(image: temp)
           c.content_images << content_image
         end
         c.save!
