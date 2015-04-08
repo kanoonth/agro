@@ -51,24 +51,16 @@ html,body{
 }
 
 .page-wrapper{
-
 	min-height: 100%;
 	height: 100%;
-	/*margin-top: 50px;*/
-	/*padding: 30px 50px 50px 50px;
-	max-width: 100%;
-	margin-right: auto;
-	margin-left: auto;
-	display: block;*/
 	background-color: $maincolor;
-	/*-webkit-box-shadow: $shadow;
-	-moz-box-shadow: $shadow;
-	box-shadow: $shadow;*/
+
 	}
 .circle {
 	border-radius: 3%;
 	border-color: #2C3E50;
-	border: 5px solid;
+	/*border: 5px solid;*/
+
 	background-color: #ECF0F1;
 	/* width and height can be anything, as long as they're equal */
 }
@@ -117,14 +109,45 @@ html,body{
 }
 
 .footer {
-	margin-top: 50px;
+	/*margin-top: 50spx;*/
    	position:static;
    	bottom:0;
    	width:100%;
-   	height:60px;   /* Height of the footer */
-   	background-color: #ACE25C;
+   	/*height:60px;*/
+   	background-color: #ACE25C !important;
+   	color: #3E4347;
+   	div {
+		text-align: left;
+
+   	}
+
+   	.footer-container {
+   		background-color: #ACE25C;
+   		.footer-desc {
+   			float: left;
+   			margin-left: 50px;
+   		}
+   	}
+
 }
 
+.kanoon-logo {
+	float: left;
+	background-color: #ACE25C;
+	margin-bottom: 5px;
+	@media screen and (max-width: 600px) {
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+.logo {
+	margin-left: 15px;
+	margin-bottom: 0px !important;
+	@media screen and (max-width: 600px) {
+		margin-left: 0px;
+	}	
+}
 
 
 
@@ -139,6 +162,7 @@ html,body{
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 10px;
+	padding-bottom: 15px;
 	text-align: left;
 	/*min-height: 300px;*/
 	/*min-width: 40%;*/
@@ -174,6 +198,7 @@ html,body{
 		margin-left: auto;
 		margin-right: auto;
 		padding-top: 10px;
+		padding-bottom: 15px;
 		text-align: left;
 		/*min-height: 300px;*/
 		/*min-width: 700px;*/
